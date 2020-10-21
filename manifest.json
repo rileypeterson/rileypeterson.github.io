@@ -1,6 +1,0 @@
-{
-  "short_name": "Riley App",
-  "name": "Riley React App Sample",
-  "start_url": "./index.html",
-  "display": "standalone",
-}
