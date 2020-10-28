@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Riley Peterson"
 date:   2020-10-20 19:03:18 -0700
 categories: jekyll update
 ---
