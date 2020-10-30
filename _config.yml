@@ -34,13 +34,6 @@ theme: minima
 plugins:
   - jekyll-feed
 
-author:
-    name: "Riley Peterson"
-    links:
-      - label: "Twitter"
-        icon: "fab fa-fw fa-twitter-square"
-        url: "https://twitter.com"
-
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
