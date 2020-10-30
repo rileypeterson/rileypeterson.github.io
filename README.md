@@ -8,3 +8,13 @@
     cp -r /usr/local/lib/ruby/gems/2.7.0/gems/minima-2.5.1/* ./
     ```
 * This had the effect of overwriting the README, unfortunately
+
+## Goals
+1. First I've got to design what this thing ought to look like. 
+    * I'm going to put the "Menu" on the left side
+    * It'll have a circle picture in the upper left
+    * Below the pic will be icons and links to socials etc.
+    * Then below that Home, About, Projects, Writings
+    * Projects should have an arrow that when you hover it shows potential projects
+      * If you click Projects, it shows tiles with images and title underneath for each project
+    
