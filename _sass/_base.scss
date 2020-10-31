@@ -1,0 +1,91 @@
+@import "reset";
+@import "variables";
+
+html,
+body {
+  background: $defaultBackground;
+  color: $defaultFontColor;
+  font-family: $defaultFontFamily;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $defaultFontFamily;
+  color: $defaultFontColor;
+  font-weight: bold;
+
+  line-height: 1.7;
+  padding: 0;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+hr {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sidebarMenu>a>h2:hover, .sidebarMenu>div>a>h2:hover {
+  background-color: $defaultHoverColor;
+  text-decoration: none;
+}
+
+.sidebarMenu>a, .sidebarMenu>div>a {
+  text-decoration: none;
+}
+
+.sidebarMenu>a>h2 {
+  margin-top: 20px;
+}
+
+
+#home {
+  padding-top: 20px;
+}
+
+.sidebar {
+  width: $defaultSidebarWidth;
+  height: 100%;
+  float: left;
+  border-right: 2px solid white;
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+img {
+  max-width: 100%;
+}
+
+img.rounded-img {
+  padding-bottom: 20px;
+  border-radius: 50%;
+}
+
+ul.social-media-row {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+ul.social-media-row > li {
+  display: inline;
+  padding-right: 5px;
+}
+
+ul.social-media-row > li:last-child {
+  display: inline;
+  padding-right: 0px;
+}
+
+.svg-icon {
+  width: $defaultSidebarWidth/5;
+  height: $defaultSidebarWidth/5;
+}
