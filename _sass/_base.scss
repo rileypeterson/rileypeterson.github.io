@@ -28,13 +28,14 @@ h2 {
 }
 
 hr {
-  width: 80%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
 }
 
 .sidebarMenu>a>h2:hover, .sidebarMenu>div>a>h2:hover {
   background-color: $defaultHoverColor;
+  border-radius: 10px;
   text-decoration: none;
 }
 
@@ -44,6 +45,15 @@ hr {
 
 .sidebarMenu>a>h2 {
   margin-top: 20px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sidebarMenu>div>a>h2 {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -68,6 +78,7 @@ img {
 img.rounded-img {
   padding-bottom: 20px;
   border-radius: 50%;
+  max-width: 160px;
 }
 
 ul.social-media-row {
@@ -77,7 +88,7 @@ ul.social-media-row {
 
 ul.social-media-row > li {
   display: inline;
-  padding-right: 5px;
+  padding-right: 10px;
 }
 
 ul.social-media-row > li:last-child {
@@ -88,4 +99,11 @@ ul.social-media-row > li:last-child {
 .svg-icon {
   width: $defaultSidebarWidth/5;
   height: $defaultSidebarWidth/5;
+  fill: $defaultFontColor;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.svg-icon:hover {
+  fill: $defaultHoverColor;
 }
