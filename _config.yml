@@ -30,9 +30,16 @@ twitter_username: drlocks619
 github_username:  rileypeterson
 linkedin_username: riley-peterson-73ba46a4
 instagram_username: rileypetersun
-
+pages_ordered: ["Home", "About", "Projects", "Posts"]
+# collections:
+#   pages:
+#     order:
+#       - home.md
+#       - about.md
+#       - projects.md
+#       - posts.md
 # Build settings
-theme: minima
+# theme: minima
 plugins:
   - jekyll-feed
 

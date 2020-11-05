@@ -8,6 +8,9 @@ body {
   font-family: $defaultFontFamily;
   font-size: 18pt;
   height: 100%;
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: $defaultLineHeight;
 }
 
 h1,
@@ -21,6 +24,12 @@ h6 {
   font-weight: bold;
   line-height: 1.7;
   padding: 0;
+  text-transform:capitalize;
+}
+
+a {
+  color: $defaultLinkColor;
+  text-decoration: none;
 }
 
 h1 {
@@ -57,11 +66,6 @@ main {
 .sidebarMenu>a>h2:hover, .sidebarMenu>div>a>h2:hover {
   background-color: $defaultHoverColor;
   border-radius: 10px;
-  text-decoration: none;
-}
-
-.sidebarMenu>a, .sidebarMenu>div>a {
-  text-decoration: none;
 }
 
 .sidebarMenu>a>h2 {
@@ -77,9 +81,8 @@ main {
   margin-right: auto;
 }
 
-
-#home {
-  padding-top: 20px;
+.sidebarMenu {
+  padding-bottom: 20px;
 }
 
 .sidebar {
@@ -115,6 +118,10 @@ ul.social-media-row > li {
 ul.social-media-row > li:last-child {
   display: inline;
   padding-right: 0px;
+}
+
+.contact-info {
+  padding-top: 20px;
 }
 
 .svg-icon {
