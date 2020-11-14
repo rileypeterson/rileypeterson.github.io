@@ -6,7 +6,7 @@
 
   <div>Riley Peterson</div>
   {%- include social-row.html -%}
-  <hr />
+  <hr class="sidebar-hr"/>
   <div class="sidebarMenu">
     <!-- TODO for loop here -->
     {% for page_title in site.pages_ordered %}
@@ -26,6 +26,6 @@
     <a href="{{ site.baseurl }}/about"><h2>About</h2></a>
     <a href="#"><h2>Projects</h2></a> -->
   </div>
-  <hr />
+  <hr class="sidebar-hr"/>
   {%- include contact-info.html -%}
 </div>

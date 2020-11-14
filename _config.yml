@@ -31,17 +31,27 @@ github_username:  rileypeterson
 linkedin_username: riley-peterson-73ba46a4
 instagram_username: rileypetersun
 pages_ordered: ["Home", "About", "Projects", "Posts"]
-# collections:
-#   pages:
-#     order:
-#       - home.md
-#       - about.md
-#       - projects.md
-#       - posts.md
+
+timezone:     America/Los_Angeles
+
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:title
 # Build settings
 # theme: minima
 plugins:
   - jekyll-feed
+
+# # Conversion
+# markdown: kramdown
+# highlighter: pygments
+
+# # Markdown Processors
+# kramdown:
+#   input: GFM
+#   auto_ids: true
+#   syntax_highlighter: pygments
 
 # Exclude from processing.
 # The following items will not be processed, by default.
