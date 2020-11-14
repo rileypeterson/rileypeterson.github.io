@@ -39,3 +39,4 @@ columns = list(range(1, max_week + 1))
 values = [defensive_scores]
 df = pd.DataFrame(index=indexes, columns=columns, data=values)
 print(df.to_markdown(tablefmt="github"))
+print(defensive_scores)

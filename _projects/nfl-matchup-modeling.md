@@ -77,6 +77,29 @@ Now consider the distribution of points surrendered by the Cleveland Browns defe
 | Cleveland Browns's Points Scored |  38 |  30 |  20 |  38 |  23 |  38 |  34 |  16 | BYE |
 
 
+{% capture details %}
+{% highlight python %}
+{% include_relative snippets/{{ slug-name }}/score-scrape-browns-defense.py %}
+{% endhighlight %}
+{% endcapture %}
+{% capture title %}
+Score Scraper (Browns Defense)
+{% endcapture %}
+{% include snippet.html %}
+
+
+![Example Gaussian](/assets/images/{{ slug-name }}/pdf-graphs-with-convolution.png)
+{: class="project-image"}
+
+{% capture details %}
+{% highlight python %}
+{% include_relative snippets/{{ slug-name }}/score-scrape-browns-defense.py %}
+{% endhighlight %}
+{% endcapture %}
+{% capture title %}
+Offensive Points Gaussian PDF
+{% endcapture %}
+{% include snippet.html %}
 
 
 
