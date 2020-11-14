@@ -56,16 +56,16 @@ Score Scraper
 This is just a distribution of numbers so from its mean and standard deviation
 we can form a gaussian:
 
-![Example Gaussian](/assets/images/{{ slug-name }}/gaussian.png)
+![Example Gaussian](/assets/images/{{ slug-name }}/gaussian1.png)
 {: class="project-image"}
 
 {% capture details %}
 {% highlight python %}
-{% include_relative snippets/{{ slug-name }}/score-scrape.py %}
+{% include_relative snippets/{{ slug-name }}/pdf-graphs.py %}
 {% endhighlight %}
 {% endcapture %}
 {% capture title %}
-Score Scraper
+Offensive Points Gaussian PDF
 {% endcapture %}
 {% include snippet.html %}
 

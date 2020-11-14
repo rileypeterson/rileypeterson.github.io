@@ -1,11 +1,11 @@
-from scipy.signal import convolve
+import os
 from scipy.stats import norm
 from scipy.interpolate import interp1d
 from scipy.integrate import quad
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-matplotlib.rcParams["figure.figsize"] = (20, 14)
+matplotlib.rcParams["figure.figsize"] = (11, 8)
 plt.style.use('fivethirtyeight')
 
 scores = [20, 16, 21, 23, 30, 36, 20, 'BYE', 27]
@@ -45,7 +45,11 @@ def plot_offensive_points(scores):
     plt.xlabel("Points")
     plt.ylabel("Probability")
     plt.title(f"Offensive Points: {team}")
-    plt.savefig("")
+    rel_path = "assets/images/nfl-matchup-modeling/gaussian1.png"
+    p = os.path.abspath(os.getcwd())
+    for i in range(3):
+        p = os.path.dirname(p)
+    plt.savefig(os.path.relpath(os.path.join(p, rel_path)))
 
 
 plot_offensive_points(scores)
