@@ -82,6 +82,20 @@ hr {
   margin-top: 20px;
 }
 
+blockquote {
+	background:		#494949;
+	border-left:	10px solid #ccc;
+	margin:			10px 10px;
+	padding:		.5em 10px;
+  quotes:			"\201C""\201D""\2018""\2019";
+  color: #cfcfcf;
+  font-style: italic;
+}
+
+blockquote p {
+	display:		inline;
+}
+
 hr.sidebar-hr {
   width: 70%;
   margin-bottom: 0px;
@@ -246,11 +260,17 @@ li span {
 .project-image {
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
+  max-width: 90%;
   margin-top: 20px;
   margin-bottom: 20px;
-  border: rgb(173, 173, 173) solid 5px;
   line-height: 0px;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.project-image img {
+  border: $defaultPicBorderColor solid 3px;
 }
 
 em, i {

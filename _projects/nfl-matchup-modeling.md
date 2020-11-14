@@ -54,7 +54,7 @@ Score Scraper
 
 
 This is just a distribution of numbers so from its mean and standard deviation
-we can form a gaussian:
+we can form a Gaussian:
 
 ![Example Gaussian](/assets/images/{{ slug-name }}/gaussian1.png)
 {: class="project-image"}
@@ -87,19 +87,60 @@ Score Scraper (Browns Defense)
 {% endcapture %}
 {% include snippet.html %}
 
+Combining these together we get the following Gaussian distributions:
 
-![Example Gaussian](/assets/images/{{ slug-name }}/pdf-graphs-with-convolution.png)
+![Matchup Distribution](/assets/images/{{ slug-name }}/pdf-graphs-with-convolution.png)
 {: class="project-image"}
 
 {% capture details %}
 {% highlight python %}
-{% include_relative snippets/{{ slug-name }}/score-scrape-browns-defense.py %}
+{% include_relative snippets/{{ slug-name }}/pdf-graphs-with-convolution.py %}
 {% endhighlight %}
 {% endcapture %}
 {% capture title %}
-Offensive Points Gaussian PDF
+Matchup Distribution
 {% endcapture %}
 {% include snippet.html %}
 
+For those who are not familiar with [convolutions](https://en.wikipedia.org/wiki/Convolution), it essentially will morph 
+two waveforms together. This means that should a dominant offense (30 points per game (ppg)) play a weak defense (surrenders 40 ppg), the resulting 
+waveform will predict the offense scoring more than usual (~35 points). However, if they play a strong defense (surrenders 20 ppg), then the expected offensive score will be lower (somewhere between ~25 points). If they play a defense which typically surrenders 30 ppg, then the convolution will 
+support this expectation.
 
+![Convolution](/assets/images/{{ slug-name }}/convolution.png)
+{: class="project-image"}
 
+{% capture details %}
+{% highlight python %}
+{% include_relative snippets/{{ slug-name }}/convolution.py %}
+{% endhighlight %}
+{% endcapture %}
+{% capture title %}
+Convolution
+{% endcapture %}
+{% include snippet.html %}
+
+So this expects the Houston Texans to score 27 +/- 5 points against the Cleveland Browns this weekend. 
+
+---
+
+#### Shortcomings
+If you know anything about the upcoming matchup I've been running with you would think that's crazy. Here are the reasons why:
+
+*  First and foremost:
+    > The Weather Channel is calling for an 80 percent chance of rain in Cleveland on Sunday, with 25-35 mph winds and occasional gusts over 50 mph.
+
+    Clearly this model does not account for inclement weather.
+*  Large standard deviations. If the distribution of points is "too wide", then it has trouble predicting a blowout more one sided result.
+*  No recency bias. The Colts have come a long way since their week 1 woes. What you showed me last week matters much more than week one.
+*  Personnel considerations. The Cowboys lost Dak and Dalton over the past few weeks. Jerry is picking guys off the street to fill their QB spot. Big Ben might be out with COVID.
+*  It doesn't account for the strength of the defenses you played. The way to the think about this is imagine t1 which has only played lousy defenses
+they put up 40 points a game. Their offense isn't that good, they've just been playing high school defenses. Then they go to Pittsburgh and play the hard nosed Steelers, even if the model is saying they will put up less points than usual, they will probably put up **much** less because they haven't played a real defense. I think this is the most accessible aspect to address, just takes some careful thought.
+*  Doesn't work for no prior data. Guess I'm sticking to my gut for week 1 picks next year. 😩
+
+---
+
+Last time it was windy in Cleveland 😂:
+
+![WINDY](https://user-images.githubusercontent.com/29719483/99143552-2d3ae280-2613-11eb-82e9-941a41ad5a29.gif)
+{: class="project-image"}
