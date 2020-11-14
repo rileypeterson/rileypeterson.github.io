@@ -59,6 +59,16 @@ we can form a gaussian:
 ![Example Gaussian](/assets/images/{{ slug-name }}/gaussian.png)
 {: class="project-image"}
 
+{% capture details %}
+{% highlight python %}
+{% include_relative snippets/{{ slug-name }}/score-scrape.py %}
+{% endhighlight %}
+{% endcapture %}
+{% capture title %}
+Score Scraper
+{% endcapture %}
+{% include snippet.html %}
+
 
 Now consider the distribution of points surrendered by the Cleveland Browns defense:
 
@@ -68,7 +78,5 @@ Now consider the distribution of points surrendered by the Cleveland Browns defe
 
 
 
-![Example Game Lines](/assets/images/game-lines.png)
-{: class="project-image"}
 
 
