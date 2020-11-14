@@ -4,11 +4,9 @@ title:  "NFL Matchup Modeling"
 date:   2020-11-06
 categories: jekyll update
 preview-image: preview.jpg
-defaults:
-  - scope:
-    path: "assets/img"
 ---
 
+{%- assign slug-name = page.title | slugify | downcase -%}
 ---
 ### Introduction
 The NFL consists of 16 regular season games. Each week teams battle it out on the field while oddsmakers in Vegas
@@ -21,9 +19,8 @@ lines are:
 
 As an example, here are the current lines for an upcoming game this weekend (Week 10):
 
-{{ page.title | downcase | slugify }}/images/game-lines.png)
 
-![Example Game Lines](/game-lines.png)
+![Example Game Lines](/assets/images/{{ slug-name }}/game-lines.png)
 {: class="project-image"}
 
 The goal of this project is to use mathematical methods and analysis to correctly predict the winning side, the spread, and total points.
@@ -47,7 +44,7 @@ in preceding weeks. Consider the distribution of points surrendered by the team 
 
 {% capture details %}
 {% highlight python %}
-{% include_relative snippets/score-scrape.py %}
+{% include_relative snippets/{{ slug-name }}/score-scrape.py %}
 {% endhighlight %}
 {% endcapture %}
 {% capture title %}
@@ -55,21 +52,13 @@ Score Scraper
 {% endcapture %}
 {% include snippet.html %}
 
+
 This is just a distribution of numbers so from its mean and standard deviation
 we can form a gaussian:
 
-![Example Gaussian]({{ page.title | downcase | slugify }}/images/game-lines.png)
+![Example Gaussian](/assets/images/{{ slug-name }}/gaussian.png)
 {: class="project-image"}
 
-{% capture details %}
-{% highlight python %}
-{% include_relative snippets/pdfs-graphs.py %}
-{% endhighlight %}
-{% endcapture %}
-{% capture title %}
-Offensive Scores Gaussian
-{% endcapture %}
-{% include snippet.html %}
 
 Now consider the distribution of points surrendered by the Cleveland Browns defense:
 
@@ -77,25 +66,9 @@ Now consider the distribution of points surrendered by the Cleveland Browns defe
 |----------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Cleveland Browns's Points Scored |  38 |  30 |  20 |  38 |  23 |  38 |  34 |  16 | BYE |
 
-{% capture details %}
-{% highlight python %}
-{% include_relative snippets/score-scrape-browns-defense.py %}
-{% endhighlight %}
-{% endcapture %}
-{% capture title %}
-Score Scraper (Browns Defense)
-{% endcapture %}
-{% include snippet.html %}
 
-![Example Gaussian]({{ page.title | downcase | slugify }}/images/game-lines.png)
+
+![Example Game Lines](/assets/images/game-lines.png)
 {: class="project-image"}
 
-{% capture details %}
-{% highlight python %}
-{% include_relative snippets/pdfs-graphs.py %}
-{% endhighlight %}
-{% endcapture %}
-{% capture title %}
-Offensive Scores Gaussian
-{% endcapture %}
-{% include snippet.html %}
+
