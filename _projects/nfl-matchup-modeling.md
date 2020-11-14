@@ -140,7 +140,7 @@ they put up 40 points a game. Their offense isn't that good, they've just been p
 
 ---
 
-Last time it was windy in Cleveland 😂:
+Last time it was windy in Cleveland 😂
 
 ![WINDY](https://user-images.githubusercontent.com/29719483/99143552-2d3ae280-2613-11eb-82e9-941a41ad5a29.gif)
 {: class="project-image"}

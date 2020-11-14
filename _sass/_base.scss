@@ -198,15 +198,15 @@ ul.social-media-row > li:last-child {
   background-color: $defaultMenuItemColor;
   min-height: $defaultMenuMinHeight;
   border-radius: 10px;
-  align-items: center;
-  
+  align-items: center;  
+  margin-bottom: 20px;
 }
 
 .menu-item-img-wrapper>img {
   display: flex;
   align-items: center;
   max-height: $defaultMenuMinHeight;
-  // max-width: 300px;
+  width: $defaultMenuPicMinWidth;
   border-radius: 5px;
 }
 
