@@ -9,5 +9,8 @@ preview-image: preview.jpg
 {%- assign slug-name = page.title | slugify | downcase -%}
 ---
 ### Introduction
-The NFL consists of 16 regular season games. Each week teams battle it out on the field while oddsmakers in Vegas
+This is a record of my quest to better understand how I can financially plan for my future. 
+The world of finance is incredibly complicated. It's difficult to get a straight answer from someone
+about what to do with your money. I share what I've learned and give actionable advice to others in similar
+financial situations. Hope you learn something!
 
