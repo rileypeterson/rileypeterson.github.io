@@ -1,16 +1,17 @@
 <div class="sidebar">
-  <a href="#"
-    ><img class="rounded-img" src="{{ "/assets/pilot_face.jpg" | relative_url
-    }}"></a
-  >
+  <a href="{{ "/assets/pilot_face.jpg" | relative_url }}">
+    <img class="rounded-img" src="{{ "/assets/pilot_face.jpg" | relative_url }}">
+  </a>
 
   <div>Riley Peterson</div>
   {%- include social-row.html -%}
-  <hr class="sidebar-hr"/>
+  <hr class="sidebar-hr" />
   <div class="sidebarMenu">
     <!-- TODO for loop here -->
     {% for page_title in site.pages_ordered %}
-      <a href="{{ site.baseurl }}/{{ page_title | downcase }}"><h2>{{ page_title | capitalize }}</h2></a>
+    <a href="{{ site.baseurl }}/{{ page_title | downcase }}">
+      <h2>{{ page_title | capitalize }}</h2>
+    </a>
     {% endfor %}
 
 
@@ -26,6 +27,6 @@
     <a href="{{ site.baseurl }}/about"><h2>About</h2></a>
     <a href="#"><h2>Projects</h2></a> -->
   </div>
-  <hr class="sidebar-hr"/>
+  <hr class="sidebar-hr" />
   {%- include contact-info.html -%}
 </div>
