@@ -1,4 +1,3 @@
-
 @import "reset";
 @import "variables";
 
@@ -14,7 +13,6 @@ body {
   line-height: $defaultLineHeight;
 }
 
-
 h1,
 h2,
 h3,
@@ -27,7 +25,7 @@ h6 {
   font-weight: bold;
   line-height: 1.7;
   padding: 0;
-  text-transform:capitalize;
+  text-transform: capitalize;
 }
 
 a {
@@ -43,7 +41,12 @@ h1 {
   }
 }
 
-ul, ol {
+li {
+  margin: 0 0 5px 0;
+}
+
+ul,
+ol {
   margin: 15px 0;
   padding-left: 60px;
 }
@@ -56,16 +59,20 @@ ol {
   list-style-type: decimal;
 }
 
-ol ul, ul ol, ul ul, ol ol {
+ol ul,
+ul ol,
+ul ul,
+ol ol {
   margin: 0;
 }
 
-ul ul, ol ul {
+ul ul,
+ol ul {
   list-style-type: circle;
 }
 
 h1.page-title {
-
+  text-align: center;
   padding-top: 20px;
   padding-bottom: 30px;
 }
@@ -84,17 +91,27 @@ hr {
 }
 
 blockquote {
-	background:		#494949;
-	border-left:	10px solid #ccc;
-	margin:			10px 10px;
-	padding:		.5em 10px;
-  quotes:			"\201C""\201D""\2018""\2019";
+  background: #494949;
+  border-left: 10px solid #ccc;
+  margin: 10px 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
   color: #cfcfcf;
   font-style: italic;
 }
 
+p {
+  display: block;
+  margin-block-start: 1 em;
+  margin-block-end: 1 em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  margin: 0 0 1.0em 0;
+  padding: 0;
+}
+
 blockquote p {
-	display:		inline;
+  display: inline;
 }
 
 hr.sidebar-hr {
@@ -105,8 +122,6 @@ hr.sidebar-hr {
   margin-right: auto;
 }
 
-
-
 main {
   width: 80%;
   padding-left: $defaultSidebarWidth;
@@ -115,19 +130,20 @@ main {
   padding-bottom: 50px;
 }
 
-.sidebarMenu>a>h2:hover, .sidebarMenu>div>a>h2:hover {
+.sidebarMenu > a > h2:hover,
+.sidebarMenu > div > a > h2:hover {
   background-color: $defaultHoverColor;
   border-radius: 10px;
 }
 
-.sidebarMenu>a>h2 {
+.sidebarMenu > a > h2 {
   margin-top: 20px;
   width: 70%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.sidebarMenu>div>a>h2 {
+.sidebarMenu > div > a > h2 {
   width: 70%;
   margin-left: auto;
   margin-right: auto;
@@ -191,34 +207,36 @@ ul.social-media-row > li:last-child {
   fill: $defaultHoverColor;
 }
 
-
 .menu-item-outer-wrapper {
   display: flex;
   background: green;
   background-color: $defaultMenuItemColor;
   min-height: $defaultMenuMinHeight;
   border-radius: 10px;
-  align-items: center;  
+  align-items: center;
   margin-bottom: 20px;
 }
 
-.menu-item-img-wrapper>img {
+.menu-item-img-wrapper > img {
   display: flex;
-  align-items: center;
   max-height: $defaultMenuMinHeight;
-  width: $defaultMenuPicMinWidth;
+  width: auto;
+  align-items: center;
   border-radius: 5px;
 }
 
 .menu-item-img-wrapper {
   display: flex;
+  // flex: 1;
+  justify-content: center;
+  // height: $defaultMenuMinHeight;
+  width: $defaultMenuPicMinWidth;
   padding: 20px;
 }
 
-
 .menu-item-wrapper {
   display: flex;
-  width: 100%;
+  flex: 1;
   align-items: center;
   justify-content: left;
   padding-left: 10%;
@@ -273,11 +291,13 @@ li span {
   border: $defaultPicBorderColor solid 3px;
 }
 
-em, i {
+em,
+i {
   font-style: italic;
 }
 
-strong, b {
+strong,
+b {
   font-weight: bold;
 }
 
@@ -294,7 +314,31 @@ details {
   cursor: pointer;
 }
 
+.navigation-trail {
+  // float: left;
+  padding-top: 20px;
+}
 
+a.current-page {
+  color: $defaultFontColor;
+  text-decoration: underline;
+}
+
+.project-image-description-wrapper {
+  display: flex;
+}
+
+.project-image-description-image-wrapper {
+  padding-right: 25px;
+}
+
+.project-image-description-image-wrapper > img {
+  max-height: 300px;
+}
+
+.project-image-description-description-wrapper {
+  flex: 1;
+}
 
 @import "table";
 @import "monokai";

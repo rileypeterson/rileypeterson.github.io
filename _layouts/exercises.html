@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+{% assign base = "/projects/ml-book" %} 
+{% assign all-chapters = base | append: "/" %} 
+{% assign downcase-title = page.title | downcase %}
+{% assign current-page = downcase-title | append: ".html" %}
+
+<div class="navigation-trail">
+  <a href={{ all-chapters }}>Chapters</a> >
+  <a class="current-page" href={{ current-page }}>Chapter {{ page.chapter }} {{ page.title }}</a>
+</div>
+<br>
+<h1>Chapter {{ page.chapter }} {{ page.title }}</h1>
+<hr>
+<div class="exercises">
+  {{ content }}
+</div>
