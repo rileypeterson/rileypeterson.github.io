@@ -42,8 +42,39 @@ I'm not really sure I want to use a jupyter notebook. More of a qtconsole kind o
 I think I'll make a little "prerequisite" snippet at the top of every file. For me, I really like having a full snippet, e.g. you
 don't run into a NameError because of something defined in cell 2. Just want to be able to copy/paste and have it run :) Rant over
 
+On second thought it might just be easier... we'll see. [This](https://github.com/jhrmnn/knitj) looks cool... might change that up a bit to kind of
+make a custom frontend jupyter notebook which naturally interfaces with this website
+
 ## Download the Data
+Geron puts the data in tarfiles. I wrote an ephemeral tarfile downloader to dataframe:
+
+*code here*
+
+## Checking Out the Data
+Best way to do this is `df.hist` as Geron suggests. 
+
+## Train Test Split Takeaways
+Geron points out that in some cases it's beneficial to make sure you're getting the same samples
+in the test set each time. Seems to me that a good model performs about the same on any test set, but if you want to do this
+you can hash the values from each row and select 20% (or whatever) of them to form the test set. Since the dataset it static 
+this doesn't seem too pertinent, but it's good to keep in mind. For now I'm just using sklearn `train_test_split` with random state.
 
 
+## Stratified Sampling
+You want to select your test set to be proportionally similar to the total population. Example: A particular district in Alaska is 75% Democratic and 25% Republican, if you're sample size is small you might not get that same proportion in your test set, which would be problematic. Again, I think another way to address this is creating a model which generalizes well to "any" random train/test split...
 
+Geron goes on to perform a `StratifiedShuffleSplit` of the data. Figure 2-10 is an interesting illustration of how this can have a sizable effect. Rather than receiving a tip from "[chatting] with experts", let's suppose we didn't know which feature would be most important. We could probably deduce that same conclusion by looking at correlations. He discusses that in a bit.
+
+## Visualization
+I don't know if looking at the long/lat vs. median housing value really revealed too much that wasn't already known. 
+
+## Correlations
+This is important! Definitely need to always do this when exploring a dataset. It's important to note that correlations are only measuring 
+the *linear* correlations, Figure 2-14 elucidates this.
+
+## Imputer
+The best practice way to fill NaN with median or other strategy. Page 60.
+
+## Handling Categorical Attributes
+Use `sklearn.preprocessing.LabelEncoder` or `sklearn.preprocessing.OneHotEncoder` (should be 2-D). The combo of these is `sklearn.preprocessing.LabelBinarizer`.
 
