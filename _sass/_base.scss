@@ -340,5 +340,25 @@ a.current-page {
   flex: 1;
 }
 
+.citation {
+  color: white;
+  font-size: 0.8em;
+}
+
+.citation>* {
+  color: white;
+  font-weight: normal;
+}
+
+.post-meta {
+  text-align: center;
+}
+
+.post-content {
+  padding-top: 20px;
+}
+
+
+
 @import "table";
 @import "monokai";
