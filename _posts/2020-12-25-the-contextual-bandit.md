@@ -14,7 +14,7 @@ arrives and is presented to algorithm $$\mathcal{A}$$. The algorithm —based on
 one of the $$k$$ available actions, $$a_t$$. Some reward $$r_t = r_t(X_t, a_t)$$ is then generated and returned to the
 algorithm, that may update its internal model with the new data. At the end of the process, the reward
 for the algorithm is given by $$r = \sum_{t=1}^{n} r_t$$, and cumulative regret is defined as 
-$$R_\mathcal{A} = \mathop{\mathbb{E}}[r^* - r]$$ − r], where $$r^*$$ is the cumulative reward of 
+$$R_\mathcal{A} = \mathop{\mathbb{E}}[r^* - r]$$, where $$r^*$$ is the cumulative reward of 
 the optimal policy (i.e., the policy that always selects the action
 with highest expected reward given the context). The goal is to minimize $$R_\mathcal{A}$$.  
 
