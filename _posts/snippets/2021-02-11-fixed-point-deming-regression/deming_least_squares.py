@@ -13,6 +13,7 @@ def deming_reg(x, y):
     t2 = np.sqrt(np.square(b) - 4 * a * c) / (2 * a)
     m_pos = t1 + t2
     m_neg = t1 - t2
+    # Probably not mathematically correct to just knock out the summation in equation (1)...
     gen_x_star = lambda _m: (1 / (1 + _m ** 2)) * (_m * y + x)
     x_star_pos = gen_x_star(m_pos)
     s_pos = np.sum(np.square(x_star_pos - x) + np.square(m_pos * x_star_pos - y))
