@@ -67,4 +67,5 @@ exclude:
   - gemfiles/
   - Gemfile
   - Gemfile.lock
+  - README.md
   # - _projects/financial-planning.md
