@@ -1,9 +1,10 @@
-<h1 class="page-title">Projects</h1>
-{%- assign date_format = site.minima.date_format | default: "%B %Y" -%}
-{%- assign projects = site.projects | where: 'layout','project' -%}
 {%- if page.title != "Projects" -%}
     {%- assign l = 2 -%}
+    {%- assign page_title = "Recent Projects" -%}
 {%- endif -%}
+<h1 class="page-title">{{ page_title | default: "Projects" }}</h1>
+{%- assign date_format = site.minima.date_format | default: "%B %Y" -%}
+{%- assign projects = site.projects | where: 'layout','project' -%}
 {% for project in projects limit:l %}
     <a href="{{ project.url | relative_url }}">
     <div class="menu-item-outer-wrapper">
