@@ -216,13 +216,36 @@ ul.social-media-row > li:last-child {
 
 .menu-item-outer-wrapper {
   display: flex;
-  background: green;
   background-color: $defaultMenuItemColor;
   min-height: $defaultMenuMinHeight;
   border-radius: 10px;
   align-items: center;
   margin-bottom: 20px;
 }
+
+.menu-item-outer-wrapper:hover, .menu-item-outer-wrapper-post:hover {
+  background-color: $defaultHoverColor;
+}
+
+.menu-item-outer-wrapper:hover  .menu-item-wrapper {
+  border-left: 4px solid $defaultFontColor;
+}
+
+
+.menu-item-outer-wrapper-post {
+  display: flex;
+  background-color: $defaultMenuItemColor;
+  border-radius: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.menu-item-outer-wrapper:hover .menu-item-text,
+.menu-item-outer-wrapper-post:hover .menu-item-text,
+.menu-item-outer-wrapper:hover .menu-item-date {
+  color: $defaultFontColor;
+}
+
 
 .menu-item-img-wrapper > img {
   display: flex;
@@ -247,7 +270,17 @@ ul.social-media-row > li:last-child {
   align-items: center;
   justify-content: left;
   padding-left: 10%;
-  border-left: 4px solid black;
+  border-left: 4px solid $defaultHoverColor;
+  min-height: $defaultMenuMinHeight - 20px;
+  text-align: center;
+}
+
+.menu-item-wrapper-post {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: left;
+  padding-left: 5%;
   min-height: $defaultMenuMinHeight - 20px;
   text-align: center;
 }
@@ -263,7 +296,7 @@ ul.social-media-row > li:last-child {
 
 .menu-item-date {
   font-size: 20px;
-  color: black;
+  color: $defaultHoverColor;
   font-weight: none;
   float: left;
 }
