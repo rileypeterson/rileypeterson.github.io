@@ -7,7 +7,8 @@ permalink: /ml-book/chapter1/notes.html
 _Most of this we already know..._
 
 ## What is machine learning?
-Machine learning is the process of enabling a machine to solve a particular problem without being explicitly programmed.
+
+* Machine learning is the process of enabling a machine to solve a particular problem without being explicitly programmed.
 
 ## Why use machine learning?
 
@@ -21,7 +22,6 @@ Machine learning is the process of enabling a machine to solve a particular prob
 * Unsupervised learning - samples are not labelled, think clustering algorithms etc.
 * Semisupervised learning - A few of the samples are labelled (e.g. unlabelled samples could be classified as belonging to the same cluster as the labelled sample)
 * Reinforcement learning - An agent observes an environment and learns to perform actions which optimize for rewards over penalties
-
 
 ## Methods for learning
 
@@ -44,4 +44,5 @@ Machine learning is the process of enabling a machine to solve a particular prob
 * Underfitting
 
 ## Train/Test Split
-Leave behind some of the training data to test as input into your model. This will give you insight into how your model generalizes. A common split is 80/20, train/test. If you are trying to determine the best hyperparameters it is useful to also make a 3rd partition of the data known as the validation set. That way you aren't selecting hyperparameters based on the test set.
+
+* Leave behind some of the training data to test as input into your model. This will give you insight into how your model generalizes. A common split is 80/20, train/test. If you are trying to determine the best hyperparameters it is useful to also make a 3rd partition of the data known as the validation set. That way you are not selecting hyperparameters based on the test set. 

@@ -21,3 +21,9 @@ I made notes and did the exercises so that I can reference things for my future 
   * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter2/notes.md %})
   * [Exercises]({{ site.baseurl }}{% link _projects/ml-book/chapter2/exercises.md %})
 
+
+---
+Command for converting notebook to jekyll markdown (from within `/Users/riley/PycharmProjects/ml`):
+```
+jupyter nbconvert --to markdown chapter1/notes.ipynb --output /Users/riley/PycharmProjects/rileypeterson.github.io/_projects/ml-book/chapter1/notes.md
+```

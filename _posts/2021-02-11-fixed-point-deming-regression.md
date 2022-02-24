@@ -85,7 +85,7 @@ $$ a = \sum_{i=1}^{N} x_i y_i, \quad b = \sum_{i=1}^{N} (x_i^2 - y_i^2), \quad c
 
 $$ \implies m = \frac {-b \pm \sqrt{b^2 - 4 a c}}{2a} $$
 
-These yields two values for $$m$$. There's probably some official way to discern the true value of $$m$$, but I'm lazy and 
+These yield two values for $$m$$. There's probably some official way to discern the true value of $$m$$, but I'm lazy and 
 just pick the one which minimizes $$S$$ in our original equation. See the code below.
 
 ---

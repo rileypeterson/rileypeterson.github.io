@@ -3,6 +3,7 @@ layout: exercises
 chapter: 1
 permalink: /ml-book/chapter1/exercises.html
 ---
+
 1. Machine learning is the process of enabling machines (i.e. computers) to solve problems without being explicitly programs. This is done by providing data and letting the machine "decide" the optimal solution to the problem (via some loss function).
 2. It shines when solutions exist to a problem but they are too complicated to explicitly program, when solutions don't actually exist to a problem, when you expect incoming data to change and you want a solution which is robust enough to adapt, and when you want to gain insight into the solution (i.e. dissect the blackbox).
 3. When you give the model the result (i.e. label) that you expect it to predict.

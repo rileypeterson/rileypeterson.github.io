@@ -41,7 +41,7 @@ Offensive Points Gaussian PDF
 
 Now consider the distribution of points surrendered by the Cleveland Browns defense:
 
-|                                  |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 | 9   |
+| Week                             |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 | 9   |
 |----------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Cleveland Browns's Points Scored |  38 |  30 |  20 |  38 |  23 |  38 |  34 |  16 | BYE |
 

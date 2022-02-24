@@ -3,15 +3,17 @@ $borderwidth: 2pt;
 table tr th {
   background: #ffffff;
   color: #000000;
+  padding: 0;
   border: #000000 solid $borderwidth;
-  text-align: center !important;
+  text-align: center;
   font-weight: bold;
 }
 table tr td {
   background: #ffffff;
   color: #000000;
-  text-align: center !important;
+  text-align: center;
   border: #cccccc solid $borderwidth;
+  padding: 5px;
 }
 
 table {
@@ -20,14 +22,14 @@ table {
   margin-top: 40px;
   margin-bottom: 40px;
   display: block;
-  table-layout: fixed;
   width: 100%;
   border: none;
   // max-width: -moz-fit-content;
   // max-width: fit-content;
   overflow-x: auto;
-  // white-space: nowrap;
+  white-space: nowrap;
   border-collapse: separate; /* Don't collapse */
+  border-spacing: 0px;
 }
 
 tr,
@@ -36,54 +38,51 @@ th {
   vertical-align: middle;
 }
 
-th, td {
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
 table thead th:first-child {
   position: sticky;
+  left: 0;
   z-index: 2;
 }
 
 table tbody th {
   position: sticky;
+  left: 0;
   z-index: 1;
 }
 
-
+table tr th:first-child {
+  text-align: left;
+  border-left: #000000 $borderwidth;
+  padding-left: 5px;
+}
 
 table tr th:nth-of-type(1) {
   border-right: #000000 solid $borderwidth;
 }
 
-table tr td:nth-child(1) {
-  border: #000000 solid $borderwidth;
-  font-weight: bold;
-  /* Don't want the first column of true markdown table to take up too much space */
-  width: 33%;
-}
-
-table tr td:nth-child(2) {
+table tr td:nth-of-type(1) {
   border-left: #000000 solid $borderwidth;
+  text-align: left;
 }
 
-table tr:nth-of-type(1) td {
-  border-top: #000000 solid $borderwidth;
+table tr td:first-child {
+  border-left: #000000 solid $borderwidth;
+  text-align: left;
 }
 
-table tr:last-child td {
-  border-bottom: #000000 solid $borderwidth;
+table tr th:first-child {
+  border-right: #000000 solid $borderwidth;
 }
 
 table tr td:last-child {
   border-right: #000000 $borderwidth;
 }
+table tr:nth-of-type(1) td {
+  border-top: #000000 solid $borderwidth;
+}
 
-table tr th:last-child {
-  border-right: #000000 $borderwidth;
+table tr:first-child td {
+  border-top: #000000 solid $borderwidth;
 }
 
 // /* Use this if you use span-x classes on th/td. */
