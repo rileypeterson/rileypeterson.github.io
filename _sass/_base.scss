@@ -7,7 +7,7 @@ body {
   color: $defaultFontColor;
   font-family: $defaultFontFamily;
   font-size: $defaultFontSize;
-  height: 100%;
+  // height: 100%;
   text-align: justify;
   text-justify: inter-word;
   line-height: $defaultLineHeight;
@@ -105,7 +105,7 @@ p {
   margin-block-end: 1 em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  margin: 0 0 1.0em 0;
+  margin: 0 0 1em 0;
   padding: 0;
 }
 
@@ -158,12 +158,15 @@ main {
 
 .sidebar {
   width: $defaultSidebarWidth;
-  height: 100%;
+  height: 100vh;
   float: left;
   border-right: 2px solid white;
   text-align: center;
   margin-top: 0px;
   padding-top: 0px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 img {
@@ -223,14 +226,14 @@ ul.social-media-row > li:last-child {
   margin-bottom: 20px;
 }
 
-.menu-item-outer-wrapper:hover, .menu-item-outer-wrapper-post:hover {
+.menu-item-outer-wrapper:hover,
+.menu-item-outer-wrapper-post:hover {
   background-color: $defaultHoverColor;
 }
 
-.menu-item-outer-wrapper:hover  .menu-item-wrapper {
+.menu-item-outer-wrapper:hover .menu-item-wrapper {
   border-left: 4px solid $defaultFontColor;
 }
-
 
 .menu-item-outer-wrapper-post {
   display: flex;
@@ -245,7 +248,6 @@ ul.social-media-row > li:last-child {
 .menu-item-outer-wrapper:hover .menu-item-date {
   color: $defaultFontColor;
 }
-
 
 .menu-item-img-wrapper > img {
   display: flex;
@@ -385,7 +387,7 @@ a.current-page {
   font-size: 0.8em;
 }
 
-.citation>* {
+.citation > * {
   color: white;
   font-weight: normal;
 }
@@ -397,8 +399,6 @@ a.current-page {
 .post-content {
   padding-top: 20px;
 }
-
-
 
 @import "table";
 @import "monokai";

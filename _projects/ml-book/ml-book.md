@@ -25,5 +25,6 @@ I made notes and did the exercises so that I can reference things for my future 
 ---
 Command for converting notebook to jekyll markdown (from within `/Users/riley/PycharmProjects/ml`):
 ```
-jupyter nbconvert --to markdown chapter1/notes.ipynb --output /Users/riley/PycharmProjects/rileypeterson.github.io/_projects/ml-book/chapter1/notes.md
+jupyter nbconvert --NbConvertApp.output_files_dir="/Users/riley/PycharmProjects/rileypeterson.github.io/assets/images/ml-book/chapter2" --to markdown chapter2/notes.ipynb && mv chapter2/notes.md /Users/riley/PycharmProjects/rileypeterson.github.io/_projects/ml-book/chapter2/notes.md
 ```
+
