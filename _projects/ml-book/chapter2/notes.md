@@ -52,7 +52,8 @@ import urllib.request
 import os
 import pandas as pd
 
-housing_url = "https://raw.githubusercontent.com/ageron/handson-ml/master/datasets/housing/housing.tgz"
+housing_url = "https://raw.githubusercontent.com/ageron/" +
+              "handson-ml/master/datasets/housing/housing.tgz"
 
 def read_tar(url):
     r = urllib.request.urlopen(url)
@@ -405,19 +406,177 @@ df.describe()
 
 
 
+### Things to note
+* Several columns seem to be capped out a max value (e.g. `housing_median_age`)
+* `median_income` isn't in dollars
+* Many distributions are right-skewed (hump on left, called tail-heavy)
+
+### Things mentioned by Geron
+* `median_income` isn't in dollars
+* `housing_median_age` and `median_housing_value` are capped
+  * The latter might be problematic because it is our target variable. To remedy he suggests:
+    * Collect correct labels for those
+    * Remove those districts from the training/test set
+* Different scales
+* Tail heavy
+
+## Create a Test Set
+* Most of the time you're going to be fine with randomly sampling/splitting into train/test
+* Geron suggests stratified sampling (5 splits) based on median income
+* We'll try both with a 20% test size
+
 
 ```python
-print(df.describe().to_markdown())
+from sklearn.model_selection import train_test_split
+train_set, test_set = train_test_split(df, 
+                                       test_size=0.2, 
+                                       random_state=42)
 ```
 
-    |       |   longitude |    latitude |   housing_median_age |   total_rooms |   total_bedrooms |   population |   households |   median_income |   median_house_value |
-    |:------|------------:|------------:|---------------------:|--------------:|-----------------:|-------------:|-------------:|----------------:|---------------------:|
-    | count | 20640       | 20640       |           20640      |      20640    |        20433     |     20640    |     20640    |     20640       |                20640 |
-    | mean  |  -119.57    |    35.6319  |              28.6395 |       2635.76 |          537.871 |      1425.48 |       499.54 |         3.87067 |               206856 |
-    | std   |     2.00353 |     2.13595 |              12.5856 |       2181.62 |          421.385 |      1132.46 |       382.33 |         1.89982 |               115396 |
-    | min   |  -124.35    |    32.54    |               1      |          2    |            1     |         3    |         1    |         0.4999  |                14999 |
-    | 25%   |  -121.8     |    33.93    |              18      |       1447.75 |          296     |       787    |       280    |         2.5634  |               119600 |
-    | 50%   |  -118.49    |    34.26    |              29      |       2127    |          435     |      1166    |       409    |         3.5348  |               179700 |
-    | 75%   |  -118.01    |    37.71    |              37      |       3148    |          647     |      1725    |       605    |         4.74325 |               264725 |
-    | max   |  -114.31    |    41.95    |              52      |      39320    |         6445     |     35682    |      6082    |        15.0001  |               500001 |
+Let's see how similar these are:
 
+
+```python
+ax = train_set.hist(bins=5, 
+                    figsize=(16,12), 
+                    density=True, 
+                    alpha=0.8);
+test_set.hist(bins=5, 
+              figsize=(16,12), 
+              ax=ax, 
+              density=True, 
+              alpha=0.8);
+```
+
+
+    
+![png](/assets/images/ml-book/chapter2/notes_12_0.png)
+    
+
+
+That looks pretty good to me. But we'll also do the stratified method:
+
+
+```python
+# Sample to same count in each bin (5 bins)
+import numpy as np
+import pandas as pd
+strat_values = df["median_income"]
+bins = 5
+x = np.linspace(0, len(strat_values), bins + 1)
+xp = np.arange(len(strat_values))
+fp = np.sort(strat_values)
+bin_ends = np.interp(x, xp, fp)
+# Make sure we include the bin ends and end up with 5 bins in the end
+bin_ends[0] -= 0.001
+bin_ends[-1] += 0.001
+strat = np.digitize(strat_values, bins=bin_ends, right=True)
+print(bin_ends)
+print(pd.value_counts(strat))
+df["income_cat"] = strat
+strat_train_set, strat_test_set = train_test_split(df, 
+                                                   test_size=0.2, 
+                                                   random_state=42, 
+                                                   stratify=strat)
+ax = strat_train_set.hist(bins=5, 
+                          figsize=(16,16), 
+                          density=True, 
+                          alpha=0.8);
+strat_test_set.hist(bins=5, 
+                    figsize=(16,16), 
+                    ax=ax.flatten()[:-2], 
+                    density=True, alpha=0.8);
+
+
+```
+
+    [ 0.4989  2.3523  3.1406  3.9673  5.1098 15.0011]
+    2    4131
+    1    4130
+    4    4128
+    5    4127
+    3    4124
+    dtype: int64
+
+
+
+    
+![png](/assets/images/ml-book/chapter2/notes_14_1.png)
+    
+
+
+
+```python
+strat_values = df["median_income"]
+bins = 5
+strat = np.ceil(strat_values / 1.5)
+strat = strat.where(strat < 5, 5.0)
+df["income_cat"] = strat
+print(pd.value_counts(strat) / len(strat))
+strat_train_set, strat_test_set = train_test_split(df, 
+                                                   test_size=0.2, 
+                                                   random_state=42, 
+                                                   stratify=strat)
+ax = strat_train_set.hist(bins=5, figsize=(16,16), 
+                          density=True, alpha=0.8);
+strat_test_set.hist(bins=5, figsize=(16,16), 
+                    ax=ax.flatten()[:-2], 
+                    density=True, 
+                    alpha=0.8);
+
+
+```
+
+    3.0    0.350581
+    2.0    0.318847
+    4.0    0.176308
+    5.0    0.114438
+    1.0    0.039826
+    Name: median_income, dtype: float64
+
+
+
+    
+![png](/assets/images/ml-book/chapter2/notes_15_1.png)
+    
+
+
+I feel like this doesn't matter at all...
+
+
+```python
+# Drop the income_cat column
+cols = [i for i in df.columns if i != "income_cat"]
+df = df.loc[:, cols]
+strat_train_set = strat_train_set.loc[:, cols]
+strat_test_set = strat_test_set.loc[:, cols]
+# Only work with train set from here on out
+df = strat_train_set.copy()
+```
+
+## Visualize the Data to Gain Insights
+* Visualize geographically based on target variable
+* Correlations
+* Combining features
+
+
+```python
+import seaborn as sns
+plt.figure(figsize=(12, 12))
+sns.scatterplot(x="longitude", y="latitude", data=df, 
+                s=df["population"] / 50, 
+                hue=df["median_house_value"], 
+                alpha=0.3, palette="seismic");
+
+```
+
+
+    
+![png](/assets/images/ml-book/chapter2/notes_19_0.png)
+    
+
+
+
+```python
+
+```
