@@ -52,8 +52,8 @@ import urllib.request
 import os
 import pandas as pd
 
-housing_url = "https://raw.githubusercontent.com/ageron/" +
-              "handson-ml/master/datasets/housing/housing.tgz"
+housing_url = ("https://raw.githubusercontent.com/ageron/" +
+               "handson-ml/master/datasets/housing/housing.tgz")
 
 def read_tar(url):
     r = urllib.request.urlopen(url)
@@ -567,6 +567,7 @@ sns.scatterplot(x="longitude", y="latitude", data=df,
                 s=df["population"] / 50, 
                 hue=df["median_house_value"], 
                 alpha=0.3, palette="seismic");
+plt.title("Geographical Population/House Value Plot");
 
 ```
 
@@ -574,6 +575,51 @@ sns.scatterplot(x="longitude", y="latitude", data=df,
     
 ![png](/assets/images/ml-book/chapter2/notes_19_0.png)
     
+
+
+
+```python
+# Correlations
+corr = df.corr()
+corr["median_house_value"].sort_values(ascending=False)
+# Scatter
+from pandas.plotting import scatter_matrix
+scatter_matrix(df[["median_house_value", "median_income", 
+                   "total_rooms", "housing_median_age"]], figsize=(16, 12));
+```
+
+
+    
+![png](/assets/images/ml-book/chapter2/notes_20_0.png)
+    
+
+
+
+```python
+# Combining features
+df["population_per_household"] = df["population"] / df["households"]
+df["bedrooms_per_room"] = df["total_bedrooms"] / df["total_rooms"]
+df["rooms_per_household"] = df["total_rooms"] / df["households"]
+df.corr()["median_house_value"].sort_values(ascending=False)
+```
+
+
+
+
+    median_house_value          1.000000
+    median_income               0.687160
+    rooms_per_household         0.146285
+    total_rooms                 0.135097
+    housing_median_age          0.114110
+    households                  0.064506
+    total_bedrooms              0.047689
+    population_per_household   -0.021985
+    population                 -0.026920
+    longitude                  -0.047432
+    latitude                   -0.142724
+    bedrooms_per_room          -0.259984
+    Name: median_house_value, dtype: float64
+
 
 
 
