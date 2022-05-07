@@ -1,6 +1,7 @@
 ---
 layout: exercises
 chapter: 1
+chapter-title: The Machine Learning Landscape
 permalink: /ml-book/chapter1/exercises.html
 ---
 

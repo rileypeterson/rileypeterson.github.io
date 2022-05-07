@@ -1,6 +1,7 @@
 ---
 layout: notes
 chapter: 1
+chapter-title: The Machine Learning Landscape
 permalink: /ml-book/chapter1/notes.html
 ---
 

@@ -4,25 +4,32 @@
 {%- endif -%}
 <h1 class="page-title">{{ page_title | default: "Projects" }}</h1>
 {%- assign date_format = site.minima.date_format | default: "%B %Y" -%}
-{%- assign projects = site.projects | where: 'layout','project' -%}
+{%- assign projects = site.projects | where: 'layout','project' | sort: "price" | reverse -%}
 {% for project in projects limit:l %}
-    <a href="{{ project.url | relative_url }}">
-    <div class="menu-item-outer-wrapper">
-        <div class="menu-item-img-wrapper">
-        {%- assign preview_images_path = project.title | downcase | slugify -%}
-        <img src="/assets/images/{{ preview_images_path }}/{{ project.preview-image }}">
-        </div>
-        <div class="menu-item-wrapper">
-        <div class="menu-item-text">
-            {{ project.title }}
-            <br>
-            <div class="menu-item-date">
-                <span>
-                - {{ project.date | date: date_format }}
-                </span>
+    {% if project.title == "Financial Planning" %}
+    {% else %}
+        <a href="{{ project.url | relative_url }}">
+            <div class="menu-item-outer-wrapper">
+                <div class="menu-item-img-wrapper">
+                {%- assign preview_images_path = project.title | downcase | slugify -%}
+                <img src="/assets/images/{{ preview_images_path }}/{{ project.preview-image }}">
+                </div>
+                <div class="menu-item-wrapper">
+                <div class="menu-item-text">
+                    {{ project.title }}
+                    <br>
+                    <div class="menu-item-date">
+                        <span>
+                        > {{ project.date | date: date_format }} 
+                        {% if project.end_date %}
+                            - {{ project.end_date | date: date_format }} 
+                        {% endif %}
+                        </span>
+                    </div>
+                </div>
+                </div>
             </div>
-        </div>
-        </div>
-    </div>
-    </a>
+        </a>
+    {% endif %}
+
 {% endfor %}

@@ -1,6 +1,7 @@
 ---
 layout: notes
 chapter: 2
+chapter-title: End-to-End Machine Learning Project
 permalink: /ml-book/chapter2/notes.html
 ---
 
@@ -52,9 +53,12 @@ import urllib.request
 import os
 import pandas as pd
 
-housing_url = ("https://raw.githubusercontent.com/ageron/" +
-               "handson-ml/master/datasets/housing/housing.tgz")
+housing_url = (
+    "https://raw.githubusercontent.com/ageron/"
+    + "handson-ml/master/datasets/housing/housing.tgz"
+)
 FIGSIZE = (16, 12)
+
 
 def read_tar(url):
     r = urllib.request.urlopen(url)
@@ -64,6 +68,7 @@ def read_tar(url):
             name = tf.getnames()[0]
         df = pd.read_csv(os.path.join(d, name))
     return df
+
 
 df = read_tar(housing_url)
 df
@@ -258,7 +263,8 @@ df
 # Show histogram of the features
 %matplotlib inline
 import matplotlib.pyplot as plt
-df.hist(bins=100, figsize=(16,12));
+
+df.hist(bins=100, figsize=(16, 12))
 ```
 
 
@@ -429,24 +435,16 @@ df.describe()
 
 ```python
 from sklearn.model_selection import train_test_split
-train_set, test_set = train_test_split(df, 
-                                       test_size=0.2, 
-                                       random_state=42)
+
+train_set, test_set = train_test_split(df, test_size=0.2, random_state=42)
 ```
 
 Let's see how similar these are:
 
 
 ```python
-ax = train_set.hist(bins=5, 
-                    figsize=(16,12), 
-                    density=True, 
-                    alpha=0.8);
-test_set.hist(bins=5, 
-              figsize=(16,12), 
-              ax=ax, 
-              density=True, 
-              alpha=0.8);
+ax = train_set.hist(bins=5, figsize=(16, 12), density=True, alpha=0.8)
+test_set.hist(bins=5, figsize=(16, 12), ax=ax, density=True, alpha=0.8)
 ```
 
 
@@ -463,6 +461,7 @@ That looks pretty good to me. But we'll also do the stratified method:
 # We can come back and try this at the end to see how if the performance improves?
 import numpy as np
 import pandas as pd
+
 strat_values = df["median_income"]
 bins = 5
 x = np.linspace(0, len(strat_values), bins + 1)
@@ -476,20 +475,13 @@ strat = np.digitize(strat_values, bins=bin_ends, right=True)
 print(bin_ends)
 print(pd.value_counts(strat))
 df["income_cat"] = strat
-strat_train_set, strat_test_set = train_test_split(df, 
-                                                   test_size=0.2, 
-                                                   random_state=42, 
-                                                   stratify=strat)
-ax = strat_train_set.hist(bins=5, 
-                          figsize=(16,16), 
-                          density=True, 
-                          alpha=0.8);
-strat_test_set.hist(bins=5, 
-                    figsize=(16,16), 
-                    ax=ax.flatten()[:-2], 
-                    density=True, alpha=0.8);
-
-
+strat_train_set, strat_test_set = train_test_split(
+    df, test_size=0.2, random_state=42, stratify=strat
+)
+ax = strat_train_set.hist(bins=5, figsize=(16, 16), density=True, alpha=0.8)
+strat_test_set.hist(
+    bins=5, figsize=(16, 16), ax=ax.flatten()[:-2], density=True, alpha=0.8
+)
 ```
 
     [ 0.4989  2.3523  3.1406  3.9673  5.1098 15.0011]
@@ -515,18 +507,13 @@ strat = np.ceil(strat_values / 1.5)
 strat = strat.where(strat < 5, 5.0)
 df["income_cat"] = strat
 print(pd.value_counts(strat) / len(strat))
-strat_train_set, strat_test_set = train_test_split(df, 
-                                                   test_size=0.2, 
-                                                   random_state=42, 
-                                                   stratify=strat)
-ax = strat_train_set.hist(bins=5, figsize=(16,16), 
-                          density=True, alpha=0.8);
-strat_test_set.hist(bins=5, figsize=(16,16), 
-                    ax=ax.flatten()[:-2], 
-                    density=True, 
-                    alpha=0.8);
-
-
+strat_train_set, strat_test_set = train_test_split(
+    df, test_size=0.2, random_state=42, stratify=strat
+)
+ax = strat_train_set.hist(bins=5, figsize=(16, 16), density=True, alpha=0.8)
+strat_test_set.hist(
+    bins=5, figsize=(16, 16), ax=ax.flatten()[:-2], density=True, alpha=0.8
+)
 ```
 
     3.0    0.350581
@@ -564,13 +551,18 @@ df = strat_train_set.copy()
 
 ```python
 import seaborn as sns
-plt.figure(figsize=(12, 12))
-sns.scatterplot(x="longitude", y="latitude", data=df, 
-                s=df["population"] / 50, 
-                hue=df["median_house_value"], 
-                alpha=0.3, palette="seismic");
-plt.title("Geographical Population/House Value Plot");
 
+plt.figure(figsize=(12, 12))
+sns.scatterplot(
+    x="longitude",
+    y="latitude",
+    data=df,
+    s=df["population"] / 50,
+    hue=df["median_house_value"],
+    alpha=0.3,
+    palette="seismic",
+)
+plt.title("Geographical Population/House Value Plot")
 ```
 
 
@@ -586,8 +578,11 @@ corr = df.corr()
 corr["median_house_value"].sort_values(ascending=False)
 # Scatter
 from pandas.plotting import scatter_matrix
-scatter_matrix(df[["median_house_value", "median_income", 
-                   "total_rooms", "housing_median_age"]], figsize=(16, 12));
+
+scatter_matrix(
+    df[["median_house_value", "median_income", "total_rooms", "housing_median_age"]],
+    figsize=(16, 12),
+)
 ```
 
 
@@ -742,24 +737,28 @@ I'm going to avoid the custom transformer for now.
 ```python
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder    
-    
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+
 cat_cols = ["ocean_proximity"]
 num_cols = [col for col in x.columns if col not in cat_cols]
 
-num_pipeline = Pipeline([
-    ("imputer", SimpleImputer(strategy="median")),
-    ("std_scaler", StandardScaler()),
-])
+num_pipeline = Pipeline(
+    [
+        ("imputer", SimpleImputer(strategy="median")),
+        ("std_scaler", StandardScaler()),
+    ]
+)
 
-pipeline = ColumnTransformer([
-    ("num", num_pipeline, num_cols),
-    ("cat", OneHotEncoder(), cat_cols),
-])
+pipeline = ColumnTransformer(
+    [
+        ("num", num_pipeline, num_cols),
+        ("cat", OneHotEncoder(), cat_cols),
+    ]
+)
 x_final = pipeline.fit_transform(x)
 print(x_final)
 print(x_final.shape)
-# In the copy of the book I have the shape is (16513, 17), 
+# In the copy of the book I have the shape is (16513, 17),
 # but in the updated version
 # online: https://github.com/ageron/handson-ml/blob
 # /master/02_end_to_end_machine_learning_project.ipynb
@@ -887,17 +886,19 @@ tree_rmse
 ```python
 from sklearn.model_selection import cross_val_score
 
+
 def cross_val_model(m, x_m, y_m, cv=10):
-    scores = cross_val_score(m, x_m, y_m, 
-                             scoring="neg_mean_squared_error", cv=cv)
+    scores = cross_val_score(m, x_m, y_m, scoring="neg_mean_squared_error", cv=cv)
     rmse_scores = np.sqrt(-scores)
     print(rmse_scores, np.mean(rmse_scores), np.std(rmse_scores))
+
+
 cross_val_model(tree_reg, x_final, y_final)
 ```
 
-    [70997.74689866 66375.02357727 69380.04753471 68791.75438518
-     69660.23054779 74774.39968748 70262.83854291 69419.40026777
-     75103.35728118 70901.74121965] 70566.65399425945 2508.8461998241905
+    [70968.72056379 67216.68718226 70857.65880397 69194.86108641
+     69756.29757786 74386.85421573 69949.56290335 69745.34537599
+     75022.85006194 70755.92128417] 70785.47590554852 2215.1990085744
 
 
 
@@ -923,10 +924,10 @@ print(forest_rmse)
 cross_val_model(forest_reg, x_final, y_final[:, 0])
 ```
 
-    18531.14617233993
-    [48898.72408645 47242.08462076 49739.48589396 52227.39260686
-     49560.15070518 53086.13387555 49057.42947782 48077.58983821
-     52830.44049571 49916.19910055] 50063.56307010515 1900.7328684603049
+    18681.372911866638
+    [49635.15372436 47754.83871792 49368.25902706 51887.71850715
+     49747.11331684 53513.21033152 49044.38099493 47851.45135021
+     52535.51927089 50181.50476447] 50151.91500053619 1824.9254115323
 
 
 
@@ -962,13 +963,18 @@ from sklearn.model_selection import GridSearchCV
 
 param_grid = [
     {"n_estimators": [3, 10, 30], "max_features": [2, 4, 6, 8]},
-    {"bootstrap": [False], "n_estimators": [3, 10], "max_features": [2, 3, 4]}
+    {"bootstrap": [False], "n_estimators": [3, 10], "max_features": [2, 3, 4]},
 ]
 
 forest_reg = RandomForestRegressor()
 
-grid_search = GridSearchCV(forest_reg, param_grid, cv=5,
-                          scoring="neg_mean_squared_error", return_train_score=True)
+grid_search = GridSearchCV(
+    forest_reg,
+    param_grid,
+    cv=5,
+    scoring="neg_mean_squared_error",
+    return_train_score=True,
+)
 grid_search.fit(x_final, y_final[:, 0])
 ```
 
@@ -994,26 +1000,26 @@ for mean_score, params in zip(cvres["mean_test_score"], cvres["params"]):
     print(np.sqrt(-mean_score), params)
 ```
 
-    {'max_features': 8, 'n_estimators': 30}
-    RandomForestRegressor(max_features=8, n_estimators=30)
-    64868.984520148784 {'max_features': 2, 'n_estimators': 3}
-    55885.60190029862 {'max_features': 2, 'n_estimators': 10}
-    52908.40611861272 {'max_features': 2, 'n_estimators': 30}
-    60437.08053932866 {'max_features': 4, 'n_estimators': 3}
-    52873.115555744 {'max_features': 4, 'n_estimators': 10}
-    50362.36094774679 {'max_features': 4, 'n_estimators': 30}
-    58817.772063113865 {'max_features': 6, 'n_estimators': 3}
-    52011.88468406619 {'max_features': 6, 'n_estimators': 10}
-    49902.42918512121 {'max_features': 6, 'n_estimators': 30}
-    57765.34560753371 {'max_features': 8, 'n_estimators': 3}
-    52319.72109963993 {'max_features': 8, 'n_estimators': 10}
-    49744.32698468949 {'max_features': 8, 'n_estimators': 30}
-    63287.98893911005 {'bootstrap': False, 'max_features': 2, 'n_estimators': 3}
-    54359.49949744251 {'bootstrap': False, 'max_features': 2, 'n_estimators': 10}
-    60541.9398010798 {'bootstrap': False, 'max_features': 3, 'n_estimators': 3}
-    52546.53086248712 {'bootstrap': False, 'max_features': 3, 'n_estimators': 10}
-    58140.86920348559 {'bootstrap': False, 'max_features': 4, 'n_estimators': 3}
-    51644.58308169127 {'bootstrap': False, 'max_features': 4, 'n_estimators': 10}
+    {'max_features': 6, 'n_estimators': 30}
+    RandomForestRegressor(max_features=6, n_estimators=30)
+    64241.643733474426 {'max_features': 2, 'n_estimators': 3}
+    55493.95031384657 {'max_features': 2, 'n_estimators': 10}
+    52611.35103475831 {'max_features': 2, 'n_estimators': 30}
+    59612.070906720124 {'max_features': 4, 'n_estimators': 3}
+    53217.142164320154 {'max_features': 4, 'n_estimators': 10}
+    50774.31443657333 {'max_features': 4, 'n_estimators': 30}
+    58496.50322845977 {'max_features': 6, 'n_estimators': 3}
+    51673.17455491991 {'max_features': 6, 'n_estimators': 10}
+    49905.43427800321 {'max_features': 6, 'n_estimators': 30}
+    58415.20435335512 {'max_features': 8, 'n_estimators': 3}
+    51769.879435332965 {'max_features': 8, 'n_estimators': 10}
+    50108.24515443716 {'max_features': 8, 'n_estimators': 30}
+    63641.17748807948 {'bootstrap': False, 'max_features': 2, 'n_estimators': 3}
+    54078.8506451545 {'bootstrap': False, 'max_features': 2, 'n_estimators': 10}
+    60653.00976167665 {'bootstrap': False, 'max_features': 3, 'n_estimators': 3}
+    52864.94701183964 {'bootstrap': False, 'max_features': 3, 'n_estimators': 10}
+    57904.55694831166 {'bootstrap': False, 'max_features': 4, 'n_estimators': 3}
+    51990.81114906108 {'bootstrap': False, 'max_features': 4, 'n_estimators': 10}
 
 
 
@@ -1069,307 +1075,307 @@ pd.DataFrame(grid_search.cv_results_)
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.060516</td>
-      <td>0.008582</td>
-      <td>0.003529</td>
-      <td>0.000496</td>
+      <td>0.074970</td>
+      <td>0.003440</td>
+      <td>0.004058</td>
+      <td>0.000327</td>
       <td>2</td>
       <td>3</td>
       <td>NaN</td>
       <td>{'max_features': 2, 'n_estimators': 3}</td>
-      <td>-4.001943e+09</td>
-      <td>-4.385346e+09</td>
+      <td>-3.725274e+09</td>
+      <td>-4.519071e+09</td>
       <td>...</td>
-      <td>-4.207985e+09</td>
-      <td>1.470027e+08</td>
+      <td>-4.126989e+09</td>
+      <td>2.782979e+08</td>
       <td>18</td>
-      <td>-1.120865e+09</td>
-      <td>-1.080473e+09</td>
-      <td>-1.137008e+09</td>
-      <td>-1.145041e+09</td>
-      <td>-1.077242e+09</td>
-      <td>-1.112126e+09</td>
-      <td>2.827605e+07</td>
+      <td>-1.174094e+09</td>
+      <td>-1.137123e+09</td>
+      <td>-1.135578e+09</td>
+      <td>-1.161493e+09</td>
+      <td>-1.173606e+09</td>
+      <td>-1.156379e+09</td>
+      <td>1.697186e+07</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.189519</td>
-      <td>0.003879</td>
-      <td>0.009285</td>
-      <td>0.000164</td>
+      <td>0.253067</td>
+      <td>0.006757</td>
+      <td>0.013049</td>
+      <td>0.000900</td>
       <td>2</td>
       <td>10</td>
       <td>NaN</td>
       <td>{'max_features': 2, 'n_estimators': 10}</td>
-      <td>-2.921127e+09</td>
-      <td>-3.340041e+09</td>
+      <td>-2.902669e+09</td>
+      <td>-3.157306e+09</td>
       <td>...</td>
-      <td>-3.123200e+09</td>
-      <td>1.732325e+08</td>
+      <td>-3.079579e+09</td>
+      <td>1.487250e+08</td>
       <td>11</td>
-      <td>-5.833794e+08</td>
-      <td>-5.884684e+08</td>
-      <td>-5.617384e+08</td>
-      <td>-5.732831e+08</td>
-      <td>-5.727974e+08</td>
-      <td>-5.759333e+08</td>
-      <td>9.283621e+06</td>
+      <td>-5.985522e+08</td>
+      <td>-5.762183e+08</td>
+      <td>-5.598208e+08</td>
+      <td>-5.842322e+08</td>
+      <td>-5.538692e+08</td>
+      <td>-5.745385e+08</td>
+      <td>1.623130e+07</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.563491</td>
-      <td>0.006151</td>
-      <td>0.025484</td>
-      <td>0.001076</td>
+      <td>0.766241</td>
+      <td>0.061197</td>
+      <td>0.041019</td>
+      <td>0.012172</td>
       <td>2</td>
       <td>30</td>
       <td>NaN</td>
       <td>{'max_features': 2, 'n_estimators': 30}</td>
-      <td>-2.593993e+09</td>
-      <td>-2.948692e+09</td>
+      <td>-2.522423e+09</td>
+      <td>-2.879564e+09</td>
       <td>...</td>
-      <td>-2.799299e+09</td>
-      <td>1.650939e+08</td>
-      <td>9</td>
-      <td>-4.591216e+08</td>
-      <td>-4.457284e+08</td>
-      <td>-4.201065e+08</td>
-      <td>-4.335560e+08</td>
-      <td>-4.248705e+08</td>
-      <td>-4.366766e+08</td>
-      <td>1.420847e+07</td>
+      <td>-2.767954e+09</td>
+      <td>1.561066e+08</td>
+      <td>7</td>
+      <td>-4.315321e+08</td>
+      <td>-4.233639e+08</td>
+      <td>-4.226476e+08</td>
+      <td>-4.443902e+08</td>
+      <td>-4.293808e+08</td>
+      <td>-4.302629e+08</td>
+      <td>7.842951e+06</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.091491</td>
-      <td>0.002330</td>
-      <td>0.003419</td>
-      <td>0.000282</td>
+      <td>0.117724</td>
+      <td>0.002772</td>
+      <td>0.004679</td>
+      <td>0.000370</td>
       <td>4</td>
       <td>3</td>
       <td>NaN</td>
       <td>{'max_features': 4, 'n_estimators': 3}</td>
-      <td>-3.609194e+09</td>
-      <td>-3.768602e+09</td>
+      <td>-3.327938e+09</td>
+      <td>-3.817583e+09</td>
       <td>...</td>
-      <td>-3.652641e+09</td>
-      <td>2.171667e+08</td>
+      <td>-3.553599e+09</td>
+      <td>2.235334e+08</td>
       <td>15</td>
-      <td>-9.727969e+08</td>
-      <td>-9.610660e+08</td>
-      <td>-9.775897e+08</td>
-      <td>-9.743841e+08</td>
-      <td>-9.868461e+08</td>
-      <td>-9.745365e+08</td>
-      <td>8.310868e+06</td>
+      <td>-9.922077e+08</td>
+      <td>-9.869361e+08</td>
+      <td>-9.914129e+08</td>
+      <td>-9.018709e+08</td>
+      <td>-9.423203e+08</td>
+      <td>-9.629496e+08</td>
+      <td>3.577073e+07</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.299066</td>
-      <td>0.001936</td>
-      <td>0.009268</td>
-      <td>0.000611</td>
+      <td>0.396204</td>
+      <td>0.010106</td>
+      <td>0.012332</td>
+      <td>0.000672</td>
       <td>4</td>
       <td>10</td>
       <td>NaN</td>
       <td>{'max_features': 4, 'n_estimators': 10}</td>
-      <td>-2.683443e+09</td>
-      <td>-2.849819e+09</td>
+      <td>-2.740772e+09</td>
+      <td>-2.832407e+09</td>
       <td>...</td>
-      <td>-2.795566e+09</td>
-      <td>1.286849e+08</td>
-      <td>8</td>
-      <td>-5.266339e+08</td>
-      <td>-5.135197e+08</td>
-      <td>-5.025150e+08</td>
-      <td>-4.920750e+08</td>
-      <td>-5.223707e+08</td>
-      <td>-5.114229e+08</td>
-      <td>1.272255e+07</td>
+      <td>-2.832064e+09</td>
+      <td>1.248181e+08</td>
+      <td>9</td>
+      <td>-5.299414e+08</td>
+      <td>-5.012337e+08</td>
+      <td>-5.068510e+08</td>
+      <td>-5.150394e+08</td>
+      <td>-5.214479e+08</td>
+      <td>-5.149027e+08</td>
+      <td>1.020482e+07</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.895029</td>
-      <td>0.005379</td>
-      <td>0.024573</td>
-      <td>0.000686</td>
+      <td>1.183900</td>
+      <td>0.032037</td>
+      <td>0.034720</td>
+      <td>0.003109</td>
       <td>4</td>
       <td>30</td>
       <td>NaN</td>
       <td>{'max_features': 4, 'n_estimators': 30}</td>
-      <td>-2.393221e+09</td>
-      <td>-2.567666e+09</td>
+      <td>-2.458769e+09</td>
+      <td>-2.659611e+09</td>
       <td>...</td>
-      <td>-2.536367e+09</td>
-      <td>1.226422e+08</td>
+      <td>-2.578031e+09</td>
+      <td>1.205170e+08</td>
       <td>3</td>
-      <td>-3.924442e+08</td>
-      <td>-3.980252e+08</td>
-      <td>-3.912679e+08</td>
-      <td>-3.982972e+08</td>
-      <td>-3.846669e+08</td>
-      <td>-3.929403e+08</td>
-      <td>5.020856e+06</td>
+      <td>-3.960356e+08</td>
+      <td>-3.967138e+08</td>
+      <td>-3.976908e+08</td>
+      <td>-3.966141e+08</td>
+      <td>-3.885729e+08</td>
+      <td>-3.951254e+08</td>
+      <td>3.319175e+06</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.126603</td>
-      <td>0.001768</td>
-      <td>0.003162</td>
-      <td>0.000088</td>
+      <td>0.163407</td>
+      <td>0.006830</td>
+      <td>0.004493</td>
+      <td>0.000744</td>
       <td>6</td>
       <td>3</td>
       <td>NaN</td>
       <td>{'max_features': 6, 'n_estimators': 3}</td>
-      <td>-3.387712e+09</td>
-      <td>-3.562880e+09</td>
+      <td>-3.348268e+09</td>
+      <td>-3.590983e+09</td>
       <td>...</td>
-      <td>-3.459530e+09</td>
-      <td>9.813556e+07</td>
+      <td>-3.421841e+09</td>
+      <td>1.263433e+08</td>
       <td>14</td>
-      <td>-9.807738e+08</td>
-      <td>-9.211463e+08</td>
-      <td>-8.937076e+08</td>
-      <td>-9.323704e+08</td>
-      <td>-9.741853e+08</td>
-      <td>-9.404367e+08</td>
-      <td>3.282330e+07</td>
+      <td>-9.210685e+08</td>
+      <td>-9.293810e+08</td>
+      <td>-9.024612e+08</td>
+      <td>-9.630794e+08</td>
+      <td>-8.755641e+08</td>
+      <td>-9.183108e+08</td>
+      <td>2.902711e+07</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.417206</td>
-      <td>0.004117</td>
-      <td>0.008919</td>
-      <td>0.000309</td>
+      <td>0.540489</td>
+      <td>0.024100</td>
+      <td>0.012174</td>
+      <td>0.000949</td>
       <td>6</td>
       <td>10</td>
       <td>NaN</td>
       <td>{'max_features': 6, 'n_estimators': 10}</td>
-      <td>-2.592559e+09</td>
-      <td>-2.753707e+09</td>
+      <td>-2.539299e+09</td>
+      <td>-2.724873e+09</td>
       <td>...</td>
-      <td>-2.705236e+09</td>
-      <td>1.197676e+08</td>
-      <td>5</td>
-      <td>-5.170273e+08</td>
-      <td>-4.952828e+08</td>
-      <td>-5.019069e+08</td>
-      <td>-5.056183e+08</td>
-      <td>-5.266867e+08</td>
-      <td>-5.093044e+08</td>
-      <td>1.119554e+07</td>
+      <td>-2.670117e+09</td>
+      <td>1.431570e+08</td>
+      <td>4</td>
+      <td>-5.289777e+08</td>
+      <td>-4.838298e+08</td>
+      <td>-4.794369e+08</td>
+      <td>-4.998217e+08</td>
+      <td>-5.077449e+08</td>
+      <td>-4.999622e+08</td>
+      <td>1.779906e+07</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>1.255147</td>
-      <td>0.013022</td>
-      <td>0.024788</td>
-      <td>0.000859</td>
+      <td>1.557723</td>
+      <td>0.008208</td>
+      <td>0.032147</td>
+      <td>0.001470</td>
       <td>6</td>
       <td>30</td>
       <td>NaN</td>
       <td>{'max_features': 6, 'n_estimators': 30}</td>
-      <td>-2.295135e+09</td>
-      <td>-2.587089e+09</td>
+      <td>-2.311978e+09</td>
+      <td>-2.530306e+09</td>
       <td>...</td>
-      <td>-2.490252e+09</td>
-      <td>1.435721e+08</td>
-      <td>2</td>
-      <td>-3.766272e+08</td>
-      <td>-3.770775e+08</td>
-      <td>-3.779040e+08</td>
-      <td>-3.907653e+08</td>
-      <td>-3.943239e+08</td>
-      <td>-3.833396e+08</td>
-      <td>7.610654e+06</td>
+      <td>-2.490552e+09</td>
+      <td>1.364425e+08</td>
+      <td>1</td>
+      <td>-3.738081e+08</td>
+      <td>-3.723503e+08</td>
+      <td>-3.776112e+08</td>
+      <td>-3.963427e+08</td>
+      <td>-3.891545e+08</td>
+      <td>-3.818534e+08</td>
+      <td>9.341090e+06</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.160051</td>
-      <td>0.002328</td>
-      <td>0.003314</td>
-      <td>0.000464</td>
+      <td>0.199586</td>
+      <td>0.008718</td>
+      <td>0.003961</td>
+      <td>0.000096</td>
       <td>8</td>
       <td>3</td>
       <td>NaN</td>
       <td>{'max_features': 8, 'n_estimators': 3}</td>
-      <td>-2.989123e+09</td>
-      <td>-3.449705e+09</td>
+      <td>-3.293286e+09</td>
+      <td>-3.533084e+09</td>
       <td>...</td>
-      <td>-3.336835e+09</td>
-      <td>1.924232e+08</td>
-      <td>12</td>
-      <td>-8.869807e+08</td>
-      <td>-8.865434e+08</td>
-      <td>-8.831118e+08</td>
-      <td>-8.764526e+08</td>
-      <td>-8.647244e+08</td>
-      <td>-8.795626e+08</td>
-      <td>8.321054e+06</td>
+      <td>-3.412336e+09</td>
+      <td>1.883880e+08</td>
+      <td>13</td>
+      <td>-9.155409e+08</td>
+      <td>-8.965800e+08</td>
+      <td>-8.831597e+08</td>
+      <td>-8.852660e+08</td>
+      <td>-9.669854e+08</td>
+      <td>-9.095064e+08</td>
+      <td>3.094863e+07</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>0.534271</td>
-      <td>0.012299</td>
-      <td>0.011309</td>
-      <td>0.004913</td>
+      <td>0.661567</td>
+      <td>0.013049</td>
+      <td>0.011522</td>
+      <td>0.000856</td>
       <td>8</td>
       <td>10</td>
       <td>NaN</td>
       <td>{'max_features': 8, 'n_estimators': 10}</td>
-      <td>-2.614558e+09</td>
-      <td>-2.778440e+09</td>
+      <td>-2.565200e+09</td>
+      <td>-2.760625e+09</td>
       <td>...</td>
-      <td>-2.737353e+09</td>
-      <td>1.771965e+08</td>
-      <td>6</td>
-      <td>-5.007624e+08</td>
-      <td>-5.076358e+08</td>
-      <td>-4.784364e+08</td>
-      <td>-4.902162e+08</td>
-      <td>-5.126601e+08</td>
-      <td>-4.979422e+08</td>
-      <td>1.231830e+07</td>
+      <td>-2.680120e+09</td>
+      <td>1.436614e+08</td>
+      <td>5</td>
+      <td>-5.009905e+08</td>
+      <td>-4.870524e+08</td>
+      <td>-4.837687e+08</td>
+      <td>-5.273396e+08</td>
+      <td>-5.073409e+08</td>
+      <td>-5.012984e+08</td>
+      <td>1.565241e+07</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>1.682554</td>
-      <td>0.042934</td>
-      <td>0.027756</td>
-      <td>0.001582</td>
+      <td>2.099403</td>
+      <td>0.083338</td>
+      <td>0.035778</td>
+      <td>0.004660</td>
       <td>8</td>
       <td>30</td>
       <td>NaN</td>
       <td>{'max_features': 8, 'n_estimators': 30}</td>
-      <td>-2.371642e+09</td>
-      <td>-2.522463e+09</td>
+      <td>-2.336182e+09</td>
+      <td>-2.611561e+09</td>
       <td>...</td>
-      <td>-2.474498e+09</td>
-      <td>1.159096e+08</td>
-      <td>1</td>
-      <td>-3.879804e+08</td>
-      <td>-3.785990e+08</td>
-      <td>-3.834297e+08</td>
-      <td>-3.901784e+08</td>
-      <td>-3.835733e+08</td>
-      <td>-3.847521e+08</td>
-      <td>4.021583e+06</td>
+      <td>-2.510836e+09</td>
+      <td>1.374942e+08</td>
+      <td>2</td>
+      <td>-3.807474e+08</td>
+      <td>-3.895396e+08</td>
+      <td>-3.731072e+08</td>
+      <td>-3.865464e+08</td>
+      <td>-3.940694e+08</td>
+      <td>-3.848020e+08</td>
+      <td>7.274341e+06</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>0.093233</td>
-      <td>0.004820</td>
-      <td>0.003860</td>
-      <td>0.000233</td>
+      <td>0.110337</td>
+      <td>0.005226</td>
+      <td>0.005313</td>
+      <td>0.000367</td>
       <td>2</td>
       <td>3</td>
       <td>False</td>
       <td>{'bootstrap': False, 'max_features': 2, 'n_est...</td>
-      <td>-3.832010e+09</td>
-      <td>-4.124061e+09</td>
+      <td>-3.676333e+09</td>
+      <td>-4.174187e+09</td>
       <td>...</td>
-      <td>-4.005370e+09</td>
-      <td>2.350245e+08</td>
+      <td>-4.050199e+09</td>
+      <td>2.068671e+08</td>
       <td>17</td>
       <td>-0.000000e+00</td>
       <td>-0.000000e+00</td>
@@ -1381,68 +1387,68 @@ pd.DataFrame(grid_search.cv_results_)
     </tr>
     <tr>
       <th>13</th>
-      <td>0.299641</td>
-      <td>0.004060</td>
-      <td>0.011215</td>
-      <td>0.000342</td>
+      <td>0.417751</td>
+      <td>0.083123</td>
+      <td>0.014098</td>
+      <td>0.001016</td>
       <td>2</td>
       <td>10</td>
       <td>False</td>
       <td>{'bootstrap': False, 'max_features': 2, 'n_est...</td>
-      <td>-2.823932e+09</td>
-      <td>-2.951149e+09</td>
+      <td>-2.679464e+09</td>
+      <td>-2.985912e+09</td>
       <td>...</td>
-      <td>-2.954955e+09</td>
-      <td>1.498633e+08</td>
+      <td>-2.924522e+09</td>
+      <td>1.304188e+08</td>
       <td>10</td>
-      <td>-9.463245e+00</td>
-      <td>-3.785298e+01</td>
-      <td>-1.831945e+00</td>
+      <td>-0.000000e+00</td>
+      <td>-9.463245e+02</td>
       <td>-0.000000e+00</td>
       <td>-0.000000e+00</td>
-      <td>-9.829634e+00</td>
-      <td>1.444056e+01</td>
+      <td>-0.000000e+00</td>
+      <td>-1.892649e+02</td>
+      <td>3.785298e+02</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>0.120138</td>
-      <td>0.002458</td>
-      <td>0.003809</td>
-      <td>0.000192</td>
+      <td>0.148054</td>
+      <td>0.008795</td>
+      <td>0.005098</td>
+      <td>0.000627</td>
       <td>3</td>
       <td>3</td>
       <td>False</td>
       <td>{'bootstrap': False, 'max_features': 3, 'n_est...</td>
-      <td>-3.344746e+09</td>
-      <td>-3.719744e+09</td>
+      <td>-3.413029e+09</td>
+      <td>-3.862638e+09</td>
       <td>...</td>
-      <td>-3.665326e+09</td>
-      <td>1.695881e+08</td>
+      <td>-3.678788e+09</td>
+      <td>1.461245e+08</td>
       <td>16</td>
       <td>-0.000000e+00</td>
       <td>-0.000000e+00</td>
       <td>-0.000000e+00</td>
       <td>-0.000000e+00</td>
-      <td>-4.205568e+00</td>
-      <td>-8.411136e-01</td>
-      <td>1.682227e+00</td>
+      <td>-0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
     </tr>
     <tr>
       <th>15</th>
-      <td>0.424686</td>
-      <td>0.024932</td>
-      <td>0.010978</td>
-      <td>0.000322</td>
+      <td>0.484264</td>
+      <td>0.008298</td>
+      <td>0.013995</td>
+      <td>0.000664</td>
       <td>3</td>
       <td>10</td>
       <td>False</td>
       <td>{'bootstrap': False, 'max_features': 3, 'n_est...</td>
-      <td>-2.705229e+09</td>
-      <td>-2.719703e+09</td>
+      <td>-2.743328e+09</td>
+      <td>-2.828006e+09</td>
       <td>...</td>
-      <td>-2.761138e+09</td>
-      <td>1.348111e+08</td>
-      <td>7</td>
+      <td>-2.794703e+09</td>
+      <td>5.917227e+07</td>
+      <td>8</td>
       <td>-0.000000e+00</td>
       <td>-0.000000e+00</td>
       <td>-0.000000e+00</td>
@@ -1453,51 +1459,51 @@ pd.DataFrame(grid_search.cv_results_)
     </tr>
     <tr>
       <th>16</th>
-      <td>0.149522</td>
-      <td>0.009523</td>
-      <td>0.003881</td>
-      <td>0.000464</td>
+      <td>0.178736</td>
+      <td>0.007328</td>
+      <td>0.005338</td>
+      <td>0.000965</td>
       <td>4</td>
       <td>3</td>
       <td>False</td>
       <td>{'bootstrap': False, 'max_features': 4, 'n_est...</td>
-      <td>-2.882593e+09</td>
-      <td>-3.382359e+09</td>
+      <td>-3.318034e+09</td>
+      <td>-3.381403e+09</td>
       <td>...</td>
-      <td>-3.380361e+09</td>
-      <td>2.629424e+08</td>
-      <td>13</td>
+      <td>-3.352938e+09</td>
+      <td>8.572118e+07</td>
+      <td>12</td>
+      <td>-1.962887e+02</td>
       <td>-0.000000e+00</td>
       <td>-0.000000e+00</td>
+      <td>-1.051392e+04</td>
       <td>-0.000000e+00</td>
-      <td>-0.000000e+00</td>
-      <td>-0.000000e+00</td>
-      <td>0.000000e+00</td>
-      <td>0.000000e+00</td>
+      <td>-2.142042e+03</td>
+      <td>4.186630e+03</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>0.503172</td>
-      <td>0.033500</td>
-      <td>0.010024</td>
-      <td>0.000436</td>
+      <td>0.584409</td>
+      <td>0.007127</td>
+      <td>0.013667</td>
+      <td>0.000872</td>
       <td>4</td>
       <td>10</td>
       <td>False</td>
       <td>{'bootstrap': False, 'max_features': 4, 'n_est...</td>
-      <td>-2.481227e+09</td>
-      <td>-2.677832e+09</td>
+      <td>-2.593077e+09</td>
+      <td>-2.810679e+09</td>
       <td>...</td>
-      <td>-2.667163e+09</td>
-      <td>1.629529e+08</td>
-      <td>4</td>
-      <td>-2.186388e+01</td>
-      <td>-9.463245e+02</td>
+      <td>-2.703044e+09</td>
+      <td>1.018621e+08</td>
+      <td>6</td>
       <td>-0.000000e+00</td>
       <td>-0.000000e+00</td>
       <td>-0.000000e+00</td>
-      <td>-1.936377e+02</td>
-      <td>3.764387e+02</td>
+      <td>-0.000000e+00</td>
+      <td>-0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
     </tr>
   </tbody>
 </table>
@@ -1527,22 +1533,22 @@ sorted(zip(importances, attributes), reverse=True)
 
 
 
-    [(0.3694221372136908, 'median_income'),
-     (0.16465531883047652, 'INLAND'),
-     (0.11279837580912021, 'population_per_household'),
-     (0.06493158078331325, 'longitude'),
-     (0.05881433943802812, 'rooms_per_household'),
-     (0.05768310762772862, 'latitude'),
-     (0.0572419770224376, 'bedrooms_per_room'),
-     (0.04408713164475145, 'housing_median_age'),
-     (0.015758975175233156, 'total_rooms'),
-     (0.015315338777099464, 'total_bedrooms'),
-     (0.014544544089670415, 'population'),
-     (0.014198190623697855, 'households'),
-     (0.005053844226193065, '<1H OCEAN'),
-     (0.003352320594038001, 'NEAR OCEAN'),
-     (0.0020966328327269006, 'NEAR BAY'),
-     (4.618531179457562e-05, 'ISLAND')]
+    [(0.3317845401920315, 'median_income'),
+     (0.14391320344674868, 'INLAND'),
+     (0.10526089823364354, 'population_per_household'),
+     (0.08263855622539133, 'bedrooms_per_room'),
+     (0.08109436950269967, 'longitude'),
+     (0.06119936528237925, 'latitude'),
+     (0.05437513667126127, 'rooms_per_household'),
+     (0.04269180191935387, 'housing_median_age'),
+     (0.018543650605563098, 'population'),
+     (0.017855965561009164, 'total_rooms'),
+     (0.01747459825864214, 'total_bedrooms'),
+     (0.016371631697584668, 'households'),
+     (0.015137593949840484, '<1H OCEAN'),
+     (0.006837130390816489, 'NEAR OCEAN'),
+     (0.004801246718794319, 'NEAR BAY'),
+     (2.0311344240502856e-05, 'ISLAND')]
 
 
 
@@ -1551,6 +1557,7 @@ sorted(zip(importances, attributes), reverse=True)
 
 ```python
 final_model = grid_search.best_estimator_
+print(final_model)
 
 X_test = strat_test_set.drop(columns="median_house_value")
 # Little bit of an oversight here
@@ -1567,7 +1574,8 @@ final_rmse = np.sqrt(final_mse)
 print(final_rmse)
 ```
 
-    48324.11243991413
+    RandomForestRegressor(max_features=6, n_estimators=30)
+    48308.099325390474
 
 
 ## Launch, Monitor, and Maintain Your System
@@ -1580,5 +1588,3 @@ print(final_rmse)
 * Monitor system input data
 * Automate the training process and train on fresh data
 * For online learning save snapshots at regular intervals
-
-## Try it out

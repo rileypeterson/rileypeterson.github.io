@@ -12,7 +12,8 @@ layout: default
   <a class="current-page" href={{ current-page }}>Chapter {{ page.chapter }} {{ page.title }}</a>
 </div>
 <br>
-<h1>Chapter {{ page.chapter }} {{ page.title }}</h1>
+<h1>Chapter {{ page.chapter }} : {{ page.chapter-title }}</h1>
+<h2 class="notes-subtitle">{{ page.title }}</h2>
 <hr>
 <div class="exercises">
   {{ content }}

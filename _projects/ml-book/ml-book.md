@@ -1,10 +1,12 @@
 ---
 layout: project
-title:  "ML Book"
-date:   2020-11-26
+title: "ML Book"
+date: 2020-11-26
+end_date: Present
 categories: machine learning data science education
 preview-image: preview.jpg
 permalink: /projects/ml-book/
+exclude-toc: true
 ---
 
 {% capture description %}
@@ -13,18 +15,18 @@ I made notes and did the exercises so that I can reference things for my future 
 {% endcapture %}
 {% include proj-image-description.html image_url="https://github.com/ageron/handson-ml" %}
 
+<br>
+## [Github Repository](https://github.com/rileypeterson/ml)
 
-* Chapter 1
+* Chapter 1 : The Machine Learning Landscape
   * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter1/notes.md %})
   * [Exercises]({{ site.baseurl }}{% link _projects/ml-book/chapter1/exercises.md %})
-* Chapter 2
+* Chapter 2 : End-to-End Machine Learning Project
   * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter2/notes.md %})
   * [Exercises]({{ site.baseurl }}{% link _projects/ml-book/chapter2/exercises.md %})
-
-
----
-Command for converting notebook to jekyll markdown (from within `/Users/riley/PycharmProjects/ml`):
-```
-jupyter nbconvert --NbConvertApp.output_files_dir="/Users/riley/PycharmProjects/rileypeterson.github.io/assets/images/ml-book/chapter2" --to markdown chapter2/notes.ipynb && mv chapter2/notes.md /Users/riley/PycharmProjects/rileypeterson.github.io/_projects/ml-book/chapter2/notes.md
-```
-
+* Chapter 3 : Classification
+  * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter3/notes.md %})
+  * [Exercises]({{ site.baseurl }}{% link _projects/ml-book/chapter3/exercises.md %})
+* Chapter 4 : Training Models
+  * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter4/notes.md %})
+  * [Exercises]({{ site.baseurl }}{% link _projects/ml-book/chapter4/exercises.md %})
