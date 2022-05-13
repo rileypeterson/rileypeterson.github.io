@@ -196,9 +196,90 @@ ul.social-media-row > li:last-child {
 }
 
 .contact-info {
-  padding-top: 20px;
-  margin: 0px;
+  margin-top: 20px;
   padding-left: 0px;
+  font-size: 20px;
+  display: inline-block;
+  align-items: center;
+  // border: $defaultLineColor solid 1.5px;
+
+}
+
+.contact-info .svg-icon{
+  width: $defaultSidebarWidth/5;
+  height: $defaultSidebarWidth/5;
+  fill: $defaultFontColor;
+  max-width: 40px;
+  max-height: 40px;
+  vertical-align: middle;
+}
+
+.contact-info span {
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+.contact-info button {
+  vertical-align: middle;
+  font-size: 15px;
+  background: $defaultBackground;
+  color: $defaultFontColor;
+  font-family: $defaultFontFamily;
+  font-size: $defaultFontSize;
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: $defaultLineHeight;
+  border: $defaultLineColor solid 1.5px;
+  border-radius: 5px;
+  margin: 0;
+  padding: 2px;
+}
+
+.contact-info button:hover {
+  color: $defaultHoverColor;
+  border: $defaultHoverColor solid 1.5px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  width: 100px;
+  visibility: hidden;
+  background-color: $defaultFontColor;
+  color: $defaultBackground;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 20%;
+  left: 135%;
+  // margin-left: -75px;
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  margin-left: -10px;
+  margin-top: -4px;
+  border-width: 5px;
+  transform: rotate(90deg);
+  border-style: solid;
+  border-color: $defaultFontColor transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 
 .svg-icon {
@@ -279,7 +360,7 @@ ul.social-media-row > li:last-child {
   align-items: center;
   justify-content: left;
   padding-left: 5%;
-  min-height: $defaultMenuMinHeight - 20px;
+  min-height: $defaultMenuMinHeight - 40px;
   text-align: center;
 }
 
@@ -303,6 +384,12 @@ li span {
   position: relative;
   left: -10px;
 }
+
+li span.no-pull {
+  position: relative;
+  left: 0px;
+}
+
 
 .project-content {
   padding-top: 30px;
