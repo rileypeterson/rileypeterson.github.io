@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-title">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- include project-list.html -%}
+
+  {%- include post-list.html -%}
+
+
+</div>

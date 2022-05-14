@@ -1,0 +1,92 @@
+$borderwidth: 2pt;
+
+table tr th {
+  background: #ffffff;
+  color: #000000;
+  border: #000000 solid $borderwidth;
+  text-align: center !important;
+  font-weight: bold;
+}
+table tr td {
+  background: #ffffff;
+  color: #000000;
+  text-align: center !important;
+  border: #cccccc solid $borderwidth;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: block;
+  table-layout: fixed;
+  width: 100%;
+  border: none;
+  // max-width: -moz-fit-content;
+  // max-width: fit-content;
+  overflow-x: auto;
+  // white-space: nowrap;
+  border-collapse: separate; /* Don't collapse */
+}
+
+tr,
+td,
+th {
+  vertical-align: middle;
+}
+
+th, td {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+table thead th:first-child {
+  position: sticky;
+  z-index: 2;
+}
+
+table tbody th {
+  position: sticky;
+  z-index: 1;
+}
+
+
+
+table tr th:nth-of-type(1) {
+  border-right: #000000 solid $borderwidth;
+}
+
+table tr td:nth-child(1) {
+  border: #000000 solid $borderwidth;
+  font-weight: bold;
+  /* Don't want the first column of true markdown table to take up too much space */
+  width: 33%;
+}
+
+table tr td:nth-child(2) {
+  border-left: #000000 solid $borderwidth;
+}
+
+table tr:nth-of-type(1) td {
+  border-top: #000000 solid $borderwidth;
+}
+
+table tr:last-child td {
+  border-bottom: #000000 solid $borderwidth;
+}
+
+table tr td:last-child {
+  border-right: #000000 $borderwidth;
+}
+
+table tr th:last-child {
+  border-right: #000000 $borderwidth;
+}
+
+// /* Use this if you use span-x classes on th/td. */
+// table .last {
+//   padding-right: 0;
+// }

@@ -1,0 +1,41 @@
+.hljs {
+  background: #2632;
+}
+
+code {
+  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+}
+
+.highlight {
+  font-size: 13pt;
+}
+.highlight .p { color: #89DDFF }
+.highlight .p .hljs-meta { color: #89DDFF } /* Braces and Operators */
+.highlight .p .hljs-function .hljs-params { color: #89DDFF } /* Braces and Operators */
+.highlight .nb { color: #82AAFF } /* Built In */
+.highlight .nc .hljs-class .hljs-title { color: #FFCB6B } /* Class Definition */
+.highlight .n .hljs-meta { color: #82AAFF } /* Decorator */
+.highlight .si .hljs-string { color: #89DDFF } /* Docstring */
+.highlight .s .hljs-string { color: #C3E88D } /* Docstring */
+.highlight .n { color: #ffffff } /* Function Call and more :( */
+.highlight .nf .hljs-function .hljs-title { color: #82AAFF } /* Function Def */
+.highlight .k .hljs-function .hljs-keyword { color: #C792EA } /* Function Def */
+.highlight .k .hljs-keyword { color: #C792EA } /* Function Def */
+.highlight .hljs-keyword { color: #C792EA } /* Function Def */
+.highlight .ow .hljs-keyword { color: #C792EA } /* Function Def */
+.highlight .c1 .hljs-comment { color: #546E7A } /* Docstring */
+.highlight .mi .hljs-meta { color: #F78C6C } /* Docstring */
+.highlight .mi .hljs-number { color: #F78C6C } /* Docstring */
+.highlight .hljs-function .hljs-params { color: #F78C6C } /* Docstring */
+.highlight .k { color: #82AAFF } /* Docstring */
+.highlight .bp { color: #FF5370 } /* Docstring */
+.highlight .o { color: #acfffb } /* Function Call and more :( */
+.highlight .o .hljs-meta { color: #acfffb } /* Function Call and more :( */
+.highlight * { color: #ffffff } /* Function Call and more :( */
+.language-plaintext {
+  background: #225c6670; /* Output Text of Notebook */
+}
+
+
+
+

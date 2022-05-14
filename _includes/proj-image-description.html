@@ -1,0 +1,12 @@
+<div class="project-image-description-wrapper">
+    <div class="project-image-description-image-wrapper">
+        <a href="{{ include.image_url }}" target="_blank">
+                {%- assign preview_images_path = page.title | downcase | slugify -%}
+                <img src="/assets/images/{{ preview_images_path }}/{{ page.preview-image }}">
+        </a>
+    </div>
+
+    <div class="project-image-description-description-wrapper">
+        {{ description }}
+    </div>
+</div>

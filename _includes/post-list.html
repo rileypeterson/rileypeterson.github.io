@@ -1,0 +1,18 @@
+{%- if page.title != "Posts" -%}
+    {%- assign l = 2 -%}
+    {%- assign page_title = "Recent Posts" -%}
+{%- endif -%}
+<h1 class="page-title">{{ page_title | default: "Posts" }}</h1>
+{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+{%- assign posts = site.posts | where: 'layout','post' -%}
+{% for post in posts limit:l %}
+    <a href="{{ post.url | relative_url }}">
+    <div class="menu-item-outer-wrapper-post">
+        <div class="menu-item-wrapper-post">
+            <div class="menu-item-text">
+                {{ post.title }} - {{ post.date | date: date_format }} 
+            </div>
+        </div>
+    </div>
+    </a>
+{% endfor %}

@@ -1,0 +1,9 @@
+<details>
+    <summary><code class="code-pointer">>>> {{ title | markdownify | remove: '<p>' | remove: '</p>' }} 
+        {% assign strip_title = title | strip %}
+        {% if strip_title != "Citation" %}
+            Code
+        {% endif %}
+    </code></summary>
+    {{ details | markdownify }}
+</details>

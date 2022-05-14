@@ -1,0 +1,10 @@
+---
+layout: default
+---
+{% if page.title == "Projects" %}
+  {% include project-list.html %}
+{% else if page.title == "Posts" %}
+  {% include post-list.html %}
+{% endif %}
+
+{{ content }}
