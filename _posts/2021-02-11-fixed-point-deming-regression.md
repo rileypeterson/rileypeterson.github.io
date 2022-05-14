@@ -103,8 +103,16 @@ just pick the one which minimizes $$S$$ in our original equation. See the code b
 
 
 
-:-------------------------:|:-------------------------:
-![Simple](/assets/images/posts/2021-02-11-fixed-point-deming-regression/simple_least_squares.png)  |  ![Deming](/assets/images/posts/2021-02-11-fixed-point-deming-regression/deming_least_squares.png)
+# Comparison
+
+<table>
+  <tbody>
+    <tr>
+      <td style="width: 50%;"><img src="/assets/images/posts/2021-02-11-fixed-point-deming-regression/simple_least_squares.png" alt="Simple"></td>
+      <td style="width: 50%;"><img src="/assets/images/posts/2021-02-11-fixed-point-deming-regression/deming_least_squares.png" alt="Deming"></td>
+    </tr>
+  </tbody>
+</table>
 
 
 ![Deming](/assets/images/posts/2021-02-11-fixed-point-deming-regression/vs_least_squares.png)

@@ -1,3 +1,6 @@
+#### Disclaimer
+This isn't intended to be a rigorous or valid analysis I was just playing around.
+
 The NFL consists of 16 regular season games. Each week teams battle it out on the field while oddsmakers in Vegas
 are determined to set lines that will be bet equally on both sides. Traditionally, the three most common betting
 lines are:

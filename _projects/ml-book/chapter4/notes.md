@@ -245,7 +245,7 @@ This is pretty much the same as Linear Regression, but obviously there are highe
   
 * Learning Curves:
 
-![image.png](attachment:image.png)
+![image](https://user-images.githubusercontent.com/29719483/168400395-a598139a-fddd-4b06-ab14-df2d7c3f226f.png)
 
 The hallmark of an overfitting model is that the model performs significantly better on training data than on validation data.
 
@@ -547,7 +547,7 @@ plt.legend()
 
 This is what the linear decision boundary may look like after adding petal length as a features:
 
-![image.png](attachment:image.png)
+![image](https://user-images.githubusercontent.com/29719483/168400323-35bb33fb-7311-4e8d-b70f-4194708705d4.png)
 
 ### Softmax Regression
 Softmax Regression supports generalizing to multiple class predictions (i.e. not binary). The softmax score for each class k is defined:

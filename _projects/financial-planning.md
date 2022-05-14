@@ -10,33 +10,32 @@ preview-image: preview.jpg
 
 # Introduction
 This is a record of my quest to better understand how I can financially plan for my future. 
-The world of finance is incredibly complicated. It's difficult to get a straight answer from someone
-about what to do with your money. I share what I've learned and give actionable advice to others. Hope you learn something!
+The world of finance is incredibly complicated and it's difficult to get a straight answer from someone
+about what to do with your money. Don't expect that from here either, but hopefully you learn something.
 
 
-# Financial Planning
-
-## Financial Instruments for Saving Money
+# Financial Instruments for Saving Money
 
 ### Interest-Bearing Savings Account
 * This is your generic savings account at a bank
-* Typically the interest rate is about 1%, but it can be much much lower. The interest rate in my savings account is 0.03% (January 2021).
+* Typically the interest rate is about 1%, but it can be much much lower
+* The interest rate in my savings account is 0.03% (January 2021)
 * FDIC/NCUA secured up to 250,000
 * This is the least riskiest option
 
 ### Money Market Accounts
-* Higher interest than savings account. I'm seeing ~0.50% (January 2021).
+* Higher interest than savings account. I'm seeing ~0.50% (January 2021)
 * Might require minimum balance
 * FDIC/NCUA secured up to 250,000
 
 ### Money Market Mutual Funds
-* Higher interest than money market account, but pretty similar.
+* Higher interest than money market account, but pretty similar
 * React faster to changes in interest rates
 * Might require minimum balance
 * FDIC/NCUA secured up to 250,000
 
 ### Certificates of Deposit
-* Higher interest than savings account, they were like 2% pre-COVID.
+* Higher interest than savings account, they were like 2% pre-COVID
 * Term is typically between 3 months and 5 years
 * Principal and interest guarenteed if held to maturity
 * Penalties if cashed out before
@@ -45,12 +44,11 @@ about what to do with your money. I share what I've learned and give actionable 
   * When the more recent CDs mature, you reinvest in long term ones
   * This strategy provides liquidity, but also the advantage of getting overall higher yield (on the longer term CDs)
 
+# Miscellaneous
+
 ### Simple vs Compound Interest
 * Simple interest is calculated strictly on the amount deposited
 * Compound interest is calculated on the initial amount deposited plus the return each month
-
-### Debt Management
-* I don't have any fortunately, best not to have any debt. 
 
 ### How are Credit Scores Determined
 * 35% - payment history
@@ -59,59 +57,53 @@ about what to do with your money. I share what I've learned and give actionable 
 * 10% - new credit
 * 10% - overall credit mix(?)
 
-## Process of Financial Planning
-
-### Taking Stock of Your Current Financial Situation
-#### Net Worth Analysis
-* Add up all assets
-  * Physical property
-  * Money In Accounts
-    * Checking
-    * Savings
-    * Brokerage
-    * Retirement
-* Subtract all debts/liabilities
-  * Mortgage
-  * Loans
-  * Credit Card Balances
-  * Etc.
-
-#### Cash Flow
-* Estimate Income
-  * 
-
-* Estimate Expenses
-
-
+# Process of Financial Planning
 
 ### Setting Financial Goals
+* Anyone will tell you that the first step in creating a financial plan is defining your financial goals.
+* Do you want to buy a house?
+* Save for a new car?
+* Determine what you want to do with your money.
+* Goals typically fall into three time frames:
+  * Short Term Goals
+    * These are typically goals where you want the money set aside in liquid assets (so that you can quickly gain access to cash) which are low risk. 
+    * Short term goals are typically financial objectives within the next year. Some examples include:
+      * Emergency fund (6 months living expenses)
+      * Vacations
+  * Medium Term Goals
+    * Saving for a down payment
+  * Long Term Goals
+    * Saving for retirement
+    * Children's college education
 
+### Taking Stock of Your Current Financial Situation
+* Net Worth Analysis
+  * Add up all assets
+    * Physical property
+    * Money In Accounts
+      * Checking
+      * Savings
+      * Brokerage
+      * Retirement
+  * Subtract all debts/liabilities
+    * Mortgage
+    * Loans
+    * Credit Card Balances
+    * Etc.
+
+* Cash Flow
+  * Estimate Income
+  * Estimate Expenses
 
 ### Developing a Plan to Reach Your Goals
-* Analyzing your budget and relevant financial information
-*
-## Setting Financial Goals
-Anyone will tell you that the first step in creating a financial plan is defining your financial goals.
-
-### Short Term Goals
-Short term goals are typically financial objectives within the next year. Some examples include:
-* Emergency fund (6 months living expenses)
-  * I'm just leaving that in
-* Vacations
-
-These are typically goals where you want the money set aside in liquid assets (so that you can quickly gain access to cash) which are low risk. 
-
-### Medium Term Goals
-* Saving for a down payment
-
-### Long Term Goals
-* Saving for retirement
-* Children's college education
+* Analyze your budget and relevant financial information
+* Typically for short term goals you'll want to invest in financial products which are less risky
+* With medium to long time goals perhaps you can afford to take on more risk
 
 
+# Additional Information
 
-
-# TSP Allocations
+### TSP Allocations
 
 As of 11/25/2020:
 
@@ -122,26 +114,25 @@ As of 11/25/2020:
 * `L 2050 - 10.14% G | 8.11% F | 40.36% C | 12.78% S | 28.61% I`
 
 That seems kind of wacky that a five year retirement target date difference 
-result's in a ~17% difference in stock allocation. Seems like the L 2055 is 
-pretty much what I want at 26.
+result's in a ~17% difference in stock allocation. Seems like the L 2055 is what a young adult would want.
 
-per [this link](https://www.tsp.gov/funds-lifecycle/l-2050/)
-
-[How TSP calculates returns](https://www.tsp.gov/publications/oc05-16w.pdf)
-[Seeing different raw numbers depending on where I get the data](https://ycharts.com/indicators/sp_500_total_return_annual)
+Links:
+* [Data from](https://www.tsp.gov/funds-lifecycle/l-2050/)
+* [How TSP calculates returns](https://www.tsp.gov/publications/oc05-16w.pdf)
+* [Seeing different raw numbers depending on where I get the data](https://ycharts.com/indicators/sp_500_total_return_annual)
 
 ### Diversification
 
-From [this great article](https://www.investor.gov/additional-resources/general-resources/publications-research/info-sheets/beginners-guide-asset):
+[From this great article](https://www.investor.gov/additional-resources/general-resources/publications-research/info-sheets/beginners-guide-asset):
 
 >A diversified portfolio should be diversified at two levels: between asset categories and within asset categories
 
 >But the stock portion of your investment portfolio won’t be diversified, for example, if you only invest in only four or five individual stocks. You’ll need at least a *dozen* carefully selected individual stocks to be truly diversified.
 
-# Rebalancing
+### Rebalancing
 Rebalancing is the act of compensating for how your current asset allocation has changed from your original asset allocation goal. So for instance if part of your portfolio does well such that it now makes up 25%, but it was originally supposed to be 15% then you can rebalance by selling off or buying under represented assets.
 
-# Some Definitions
+### Some Definitions
 From [here](https://www.finra.org/investors/learn-to-invest/types-investments/stocks/types-of-stocks)
 * Market Capitalizations - Large (&gt; <span class="no-pull">$</span> 10 Billion), Mid (<span class="no-pull">$</span>10 - <span class="no-pull">$</span>2 Billion), Small (&lt;<span class="no-pull">$</span>2 Billion)
 * Sector - Large section of the economy (e.g. Financial companies)
@@ -151,18 +142,11 @@ From [here](https://www.finra.org/investors/learn-to-invest/types-investments/st
 * Growth - Start ups, expanding companies, growing companies. Investors buy based on the outlook on future earnings. Most growth stocks do not pay dividends.
 * Value - Solid investments which are selling at low prices given their history and market share. Possible gotchas regarding why the price is low to begin with.
 
-# Long/Short Term Capital Gains
+### Long/Short Term Capital Gains
 When you sell an asset the profit is refered to as a "capital gain". Depending on the time the asset was held, the tax rate varies. Short term capital gains, which are held for a year or less, are taxed at 10% for gains < \\$9,700. Long term capital gains, which are held for more than a year, are taxed at 0% for gains < \\$19,400. Those are 2019 numbers, but you can see this is a huge difference! The long story for this is that you should hold stocks/assets for more than a year before selling!
 
-# IRA Contributions
+### IRA Contributions
+
 In 2020 and 2021 you can contribute up to \$6,000 to traditional and Roth IRA accounts. This allows you to contribute pre-tax or deffered tax dollars to a retirement account. It's important to look at the [deduction limits, especially if you have a retirement plan at work!](https://www.irs.gov/retirement-plans/2021-ira-deduction-limits-effect-of-modified-agi-on-deduction-if-you-are-covered-by-a-retirement-plan-at-work) If you aren't going to get a full reduction in a traditional IRA, consider a Roth IRA where the modified AGI limits are higher.  
 
-<!-- # My Naive Investing Decisions (Jan. 2021)
-I have a pretty large risk tolerance at 26. Everything I've read says this should be somewhere around 95% invested in stonkz. I will split the other 5% into bonds and cash, evenly. I get paid bi-weekly. I have about \$1,000 excess cash earned every two weeks. I want to invest that amount every two weeks for at least the next year. (Eventually, I might implement something which looks at how the market performed recently and adjust that quantity according to some rules). I figure I'm probably too out of my element to invest in any one particular stock (at least for now), so I'm going to currently look at ETFs and probably mutual funds later down the line. This should supply some benefit of adding some intrinsic diversification.
-
-Here's my proposed asset allocation:
-* 95% Stocks | 2.5% Bonds | 2.5% Cash
-  * Stocks
-    * Large Cap 50%
-    * Small Cap 20%
-    * International 25% -->
+# To be continued

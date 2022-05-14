@@ -185,7 +185,7 @@ cm = cmd.confusion_matrix
 
 This is a useful image for understanding this straight from Geron's book:
 
-![image.png](attachment:image.png)
+![image](https://user-images.githubusercontent.com/29719483/168400472-b8084770-7d9e-4f05-a0c9-edae2c9c4aeb.png)
 
 ### Precision, Recall, and F1 Score
 

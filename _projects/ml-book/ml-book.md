@@ -10,13 +10,13 @@ exclude-toc: true
 ---
 
 {% capture description %}
-I read through Aurelien Geron's Machine Learning book. It's a great book and I highly recommend it!
-I made notes and did the exercises so that I can reference things for my future projects. 
+I am reading through Aurelien Geron's Machine Learning book. It's a great book and I highly recommend it!
+I made notes and did the exercises so that I can reference things for future projects. 
 {% endcapture %}
 {% include proj-image-description.html image_url="https://github.com/ageron/handson-ml" %}
 
 <br>
-## [Github Repository](https://github.com/rileypeterson/ml)
+## [My Github Repository](https://github.com/rileypeterson/ml)
 
 * Chapter 1 : The Machine Learning Landscape
   * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter1/notes.md %})

@@ -442,6 +442,19 @@ details {
 .navigation-trail {
   // float: left;
   padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  position:fixed;
+  margin-left: -10%;
+  border-bottom: 1.5px solid $defaultFontColor;
+  background-color: $defaultBackground;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.exercises-title {
+  margin-top: 50px;
 }
 
 a.current-page {

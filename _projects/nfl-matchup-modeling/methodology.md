@@ -1,5 +1,5 @@
 ## Points Prediction: Convolved PDFs
-The idea behind this approach is simple (primitive). Let's say we would like to know the number of points team 1
+The idea behind this approach is simple (dumb). Let's say we would like to know the number of points team 1
 will score against team 2. Consider the distribution of points scored by the team 1 offense
 in preceding weeks. Consider the distribution of points surrendered by the team 2 defense in preceding
  weeks. Sticking with the matchup above:
