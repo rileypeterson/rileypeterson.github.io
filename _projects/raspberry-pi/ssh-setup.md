@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: pi-nav
 permalink: /raspberry-pi/ssh-setup.html
 ---
 

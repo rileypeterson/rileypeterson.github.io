@@ -12,7 +12,7 @@ exclude-toc: true
 
 
 {% capture description %}
-In January, I ordered a [Raspberry Pi Model 4 B (2GB RAM)](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/). I'm hoping to play around with it and share my experience here.
+In January 2022, I ordered a [Raspberry Pi Model 4 B (2GB RAM)](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/). I'm hoping to play around with it and share my experience here.
 {% endcapture %}
 {% include proj-image-description.html image_url="/assets/images/raspberry-pi/box.jpg" %}
 

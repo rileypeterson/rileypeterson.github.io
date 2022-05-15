@@ -1,9 +1,9 @@
 ---
-layout: default
+layout: pi-nav
 permalink: /raspberry-pi/ordering-and-setup.html
 ---
 
-# Ordering and Setup
+<!-- # Ordering and Setup -->
 * [Ordering and Setup](#ordering-and-setup)
   * [Pre-Ordering and the Long Wait](#pre-ordering-and-the-long-wait)
   * [Gathering the Rest](#gathering-the-rest)
@@ -63,7 +63,7 @@ You are probably looking at between \\$75-\$100 depending on what you already ha
 
 ## Writing OS to Micro SD
 If you bought a [NOOBS Micro SD card](https://www.raspberrypi.com/news/introducing-noobs/), you don't need to do this step. Otherwise,
-the raspberry pi needs an operating system to work. Following [these steps](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2), we write the raspberry pi OS to the micro SD card. I did this using the adapter that came with the San Disk Micro SD and insert that into the Mac dongle slot for the SD Card. I just did the recommend OS.
+the raspberry pi needs an operating system to work. Following [these steps](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2), we write the raspberry pi OS to the micro SD card. I did this using the adapter that came with the San Disk Micro SD and insert that into the Mac dongle slot for the SD Card. I just did the recommended OS.
 
 ## Connecting and Booting Up
 Basically following [these steps](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3):
