@@ -468,6 +468,7 @@ a.current-page {
 
 .project-image-description-image-wrapper {
   padding-right: 25px;
+  max-width: 33%;
 }
 
 .project-image-description-image-wrapper > img {
@@ -508,6 +509,19 @@ a.current-page {
 h2.notes-subtitle {
   text-align: center;
   font-size: 30px;
+}
+
+.rasp-image {
+  width: 20%;
+  align-items: left;
+  margin-left: 75px;
+}
+
+.rasp-image-big {
+  width: 80%;
+  align-items: left;
+  margin-top: 10px;
+  margin-left: 75px;
 }
 
 
