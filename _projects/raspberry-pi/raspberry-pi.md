@@ -19,3 +19,4 @@ In January 2022, I ordered a [Raspberry Pi Model 4 B (2GB RAM)](https://www.rasp
 <br>
 ## [Ordering and Setup]({{ site.baseurl }}{% link _projects/raspberry-pi/ordering-and-setup.md %})
 ## [SSH Setup]({{ site.baseurl }}{% link _projects/raspberry-pi/ssh-setup.md %})
+## ... More Coming Soon!
