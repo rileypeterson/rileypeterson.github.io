@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+{% assign base = "/projects/raspberry-pi" %} 
+{% assign all-chapters = base | append: "/" %} 
+{% assign downcase-title = page.title | downcase %}
+{% assign current-page = downcase-title | append: ".html" %}
+
+<div class="navigation-trail">
+  <a href={{ all-chapters }}>Raspberry Pi</a> >
+  <a class="current-page" href={{ current-page }}>{{ page.title }}</a>
+</div>
+<br>
+<!-- <h1 class="exercises-title">Chapter {{ page.chapter }} : {{ page.chapter-title }}</h1> -->
+<h1 class="exercises-title">{{ page.title }}</h1>
+<div>
+  {{ content }}
+</div>
