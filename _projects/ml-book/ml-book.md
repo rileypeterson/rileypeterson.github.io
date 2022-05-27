@@ -30,3 +30,6 @@ I made notes and did the exercises so that I can reference things for future pro
 * Chapter 4 : Training Models
   * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter4/notes.md %})
   * [Exercises]({{ site.baseurl }}{% link _projects/ml-book/chapter4/exercises.md %})
+* Chapter 5 : Support Vector Machines
+  * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter5/notes.md %})
+  * [Exercises]({{ site.baseurl }}{% link _projects/ml-book/chapter5/exercises.md %})
