@@ -380,10 +380,11 @@ ul.social-media-row > li:last-child {
   float: left;
 }
 
-li span {
-  position: relative;
-  left: -10px;
-}
+// No idea of the impact of this, but the span part was messing up the code syntax highlighting
+// li span {
+//   position: relative;
+//   left: -10px;
+// }
 
 li span.no-pull {
   position: relative;

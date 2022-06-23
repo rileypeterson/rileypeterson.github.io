@@ -40,3 +40,37 @@ I have a Mac so these are the instructions for that. These instructions enable y
 * One thing I notice is that if the ethernet cable is unplugged from my raspberry pi, but it's still connected over the wireless the private IP address changes. I can still login via ssh (using new IP address): 
   
   `ssh -Y yourusername@192.xxx.xxx.yyy`
+
+* Set-up Permanent IP Address
+  * I'm following the instructions [here](https://raspberrypi-guide.github.io/networking/set-up-static-ip-address)
+  * First run `netstat -nr`
+  * `sudo nano /etc/dhcpcd.conf` add the following:
+    ```
+    # Raspberry Pi Setup
+    interface eth0
+    metric 300
+    static ip_address=192.168.xx.yyy/24
+    static routers=192.168.xx.z
+    static domain_name_servers=192.168.xx.z
+
+    interface wlan0
+    metric 200
+    ```
+* Easy ssh (`ssh pi`)
+  * `nano ~/.ssh/config` add the following:
+    ```
+    Host pi
+      Hostname 192.168.xx.yyy
+      User your_username
+      Port 22
+      ForwardX11 yes
+      ForwardX11Trusted yes
+    ```
+* So now you can get there either way (I also set up a iterm profile)
+
+* I also forgot my wifi network:
+  ```
+  sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+  # Delete network=....
+  # Crtl + x, y
+  ```
