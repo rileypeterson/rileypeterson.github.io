@@ -17,6 +17,9 @@ In January 2022, I ordered a [Raspberry Pi Model 4 B (2GB RAM)](https://www.rasp
 {% include proj-image-description.html image_url="/assets/images/raspberry-pi/box.jpg" %}
 
 <br>
-## [Ordering and Setup]({{ site.baseurl }}{% link _projects/raspberry-pi/ordering-and-setup.md %})
-## [SSH Setup]({{ site.baseurl }}{% link _projects/raspberry-pi/ssh-setup.md %})
-## ... More Coming Soon!
+* [Ordering and Setup]({{ site.baseurl }}{% link _projects/raspberry-pi/ordering-and-setup.md %})
+* [SSH Setup]({{ site.baseurl }}{% link _projects/raspberry-pi/ssh-setup.md %})
+* [Install Docker]({{ site.baseurl }}{% link _projects/raspberry-pi/install-docker.md %})
+
+
+... More Coming Soon!

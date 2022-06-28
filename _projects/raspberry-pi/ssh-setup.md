@@ -39,7 +39,9 @@ I have a Mac so these are the instructions for that. These instructions enable y
 * Turn off display using `vcgencmd display_power 0`, on is `vcgencmd display_power 1` or after reboot it turns back on
 * One thing I notice is that if the ethernet cable is unplugged from my raspberry pi, but it's still connected over the wireless the private IP address changes. I can still login via ssh (using new IP address): 
   
-  `ssh -Y yourusername@192.xxx.xxx.yyy`
+  `ssh -A -Y yourusername@192.xxx.xxx.yyy`
+
+* `-A` will allow you to forward the ssh agent which is super useful if you are going to be git pulling/pushing repositories
 
 * Set-up Permanent IP Address
   * I'm following the instructions [here](https://raspberrypi-guide.github.io/networking/set-up-static-ip-address)
