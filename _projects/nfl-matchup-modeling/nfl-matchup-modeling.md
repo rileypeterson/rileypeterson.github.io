@@ -2,6 +2,7 @@
 layout: project
 title:  "NFL Matchup Modeling"
 date:   2020-11-06
+cur_date:   2020-11-06
 categories: jekyll update
 preview-image: preview.jpg
 ---

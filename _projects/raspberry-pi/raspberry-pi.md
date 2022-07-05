@@ -2,6 +2,7 @@
 layout: project
 title: "Raspberry Pi"
 date: 2022-05-15
+cur_date: 2022-06-30
 end_date: Present
 categories: computing tinkering education
 preview-image: box.jpg

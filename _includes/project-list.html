@@ -4,7 +4,7 @@
 {%- endif -%}
 <h1 class="page-title">{{ page_title | default: "Projects" }}</h1>
 {%- assign date_format = site.minima.date_format | default: "%B %Y" -%}
-{%- assign projects = site.projects | where: 'layout','project' | sort: "date" | reverse -%}
+{%- assign projects = site.projects | where: 'layout','project' | sort: "cur_date" | reverse -%}
 {% for project in projects limit:l %}
     <a href="{{ project.url | relative_url }}">
         <div class="menu-item-outer-wrapper">

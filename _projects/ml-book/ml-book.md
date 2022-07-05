@@ -2,6 +2,7 @@
 layout: project
 title: "ML Book"
 date: 2020-11-26
+cur_date: 2022-07-05
 end_date: Present
 categories: machine learning data science education
 preview-image: preview.jpg
@@ -36,3 +37,6 @@ I made notes and did the exercises so that I can reference things for future pro
 * Chapter 6 : Decision Trees
   * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter6/notes.md %})
   * [Exercises]({{ site.baseurl }}{% link _projects/ml-book/chapter6/exercises.md %})
+* Chapter 7 : Ensemble Learning and Random Forests
+  * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter7/notes.md %})
+  * [Exercises]({{ site.baseurl }}{% link _projects/ml-book/chapter7/exercises.md %})

@@ -2,6 +2,7 @@
 layout: project
 title:  "Financial Planning"
 date:   2020-11-01
+cur_date:   2020-11-01
 categories: jekyll update
 preview-image: preview.jpg
 ---
