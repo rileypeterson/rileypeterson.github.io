@@ -21,6 +21,8 @@ In January 2022, I ordered a [Raspberry Pi Model 4 B (2GB RAM)](https://www.rasp
 * [Ordering and Setup]({{ site.baseurl }}{% link _projects/raspberry-pi/ordering-and-setup.md %})
 * [SSH Setup]({{ site.baseurl }}{% link _projects/raspberry-pi/ssh-setup.md %})
 * [Install Docker]({{ site.baseurl }}{% link _projects/raspberry-pi/install-docker.md %})
+* [Django, PostgreSQL, Nginx, and Certbot on Docker with Raspberry Pi ]({{ site.baseurl }}{% link _projects/raspberry-pi/docker-nginx-certbot.md %})
+
 
 
 ... More Coming Soon!

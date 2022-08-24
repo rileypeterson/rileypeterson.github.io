@@ -1,0 +1,184 @@
+<!-- https://codepen.io/ozzie/pen/YPOBEJ -->
+
+<div class="spotify-player">
+  <ul>
+    <li class="spotify-cover">
+      <img
+        src="http://i1285.photobucket.com/albums/a583/TheGreatOzz1/Hosted-Images/Noisy-Freeks-Image_zps4kilrxml.png"
+      />
+    </li>
+    <li class="spotify-info">
+      <h2 id="song-title">Ghost pepper</h2>
+      <h4 id="song-artist">Premiere</h4>
+      <div class="spotify-button-items">
+        <div id="spotify-slider"><div id="spotify-elapsed"></div></div>
+        <div id="spotify-timer"></div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<script>
+  var playhead = document.getElementById("spotify-elapsed");
+  var timeline = document.getElementById("spotify-slider");
+  var timer = document.getElementById("spotify-timer");
+  var m_secs = 0;
+  var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
+  var duration_ms = 180000;
+
+  function timeUpdate() {
+    var progress_ms = 0;
+    var c_time = (progress_ms + m_secs);
+    var playPercent = timelineWidth * (c_time / duration_ms);
+    playhead.style.width = playPercent + "px";
+
+    var secondsIn = Math.floor((Math.min(c_time, duration_ms)) / 1000);
+    var actual_seconds_in = secondsIn % 60;
+    var actual_minutes_in = Math.floor(secondsIn / 60);
+    var actual_hours_in = Math.floor(secondsIn / 3600);
+    var t = '';
+    if (actual_hours_in > 0) {
+      t += String(actual_hours_in).padStart(2, '0');
+      t += ":";
+    }
+    t += String(actual_minutes_in).padStart(2, '0');
+    t += ":";
+    t += String(actual_seconds_in).padStart(2, '0');
+    timer.innerHTML = t;
+    m_secs += 1000;
+  }
+  timeUpdate()
+  setInterval(timeUpdate, 1000);
+
+  function isElementOverflowing(elm) {
+    var overflowX = elm.offsetWidth < elm.scrollWidth,
+      overflowY = elm.offsetHeight < elm.scrollHeight;
+
+    return overflowX || overflowY;
+  }
+  function wrapContentsInMarquee(elm) {
+    var marquee = document.createElement("marquee"),
+      contents = elm.innerText;
+    console.log(contents);
+    marquee.innerText = contents;
+    elm.innerHTML = "";
+    elm.appendChild(marquee);
+  }
+
+  var element = document.getElementById("song-title");
+
+  if (isElementOverflowing(element)) {
+    wrapContentsInMarquee(element);
+  }
+
+  var element1 = document.getElementById("song-artist");
+
+  if (isElementOverflowing(element1)) {
+    wrapContentsInMarquee(element1);
+  }
+</script>
+
+<!-- <script>
+  async function get_song() {
+    let song;
+
+    //   const res = await fetch('https://jsonplaceholder.typicode.com/posts/1')
+
+    //   song = await res.json();
+    song = {
+      timestamp: 1661311581018,
+      context: {
+        external_urls: {
+          spotify: "https://open.spotify.com/playlist/5Orcrkx9Jctm9q6Wngd43X",
+        },
+        href: "https://api.spotify.com/v1/playlists/5Orcrkx9Jctm9q6Wngd43X",
+        type: "playlist",
+        uri: "spotify:playlist:5Orcrkx9Jctm9q6Wngd43X",
+      },
+      progress_ms: 73354,
+      item: {
+        album: {
+          album_type: "album",
+          artists: [
+            {
+              external_urls: {
+                spotify:
+                  "https://open.spotify.com/artist/4EVpmkEwrLYEg6jIsiPMIb",
+              },
+              href: "https://api.spotify.com/v1/artists/4EVpmkEwrLYEg6jIsiPMIb",
+              id: "4EVpmkEwrLYEg6jIsiPMIb",
+              name: "Fleet Foxes",
+              type: "artist",
+              uri: "spotify:artist:4EVpmkEwrLYEg6jIsiPMIb",
+            },
+          ],
+          external_urls: {
+            spotify: "https://open.spotify.com/album/28aerKYZtxvFfNflCyE29h",
+          },
+          href: "https://api.spotify.com/v1/albums/28aerKYZtxvFfNflCyE29h",
+          id: "28aerKYZtxvFfNflCyE29h",
+          images: [
+            {
+              height: 640,
+              url: "https://i.scdn.co/image/ab67616d0000b2734b2a236377e6d22951ccf69d",
+              width: 640,
+            },
+            {
+              height: 300,
+              url: "https://i.scdn.co/image/ab67616d00001e024b2a236377e6d22951ccf69d",
+              width: 300,
+            },
+            {
+              height: 64,
+              url: "https://i.scdn.co/image/ab67616d000048514b2a236377e6d22951ccf69d",
+              width: 64,
+            },
+          ],
+          name: "A Very Lonely Solstice",
+          release_date: "2021-12-10",
+          release_date_precision: "day",
+          total_tracks: 13,
+          type: "album",
+          uri: "spotify:album:28aerKYZtxvFfNflCyE29h",
+        },
+        artists: [
+          {
+            external_urls: {
+              spotify: "https://open.spotify.com/artist/4EVpmkEwrLYEg6jIsiPMIb",
+            },
+            href: "https://api.spotify.com/v1/artists/4EVpmkEwrLYEg6jIsiPMIb",
+            id: "4EVpmkEwrLYEg6jIsiPMIb",
+            name: "Fleet Foxes",
+            type: "artist",
+            uri: "spotify:artist:4EVpmkEwrLYEg6jIsiPMIb",
+          },
+        ],
+        disc_number: 1,
+        duration_ms: 239746,
+        explicit: false,
+        external_ids: { isrc: "USEP42107015" },
+        external_urls: {
+          spotify: "https://open.spotify.com/track/6BDVkDCHMlIbdMjGMHOtHb",
+        },
+        href: "https://api.spotify.com/v1/tracks/6BDVkDCHMlIbdMjGMHOtHb",
+        id: "6BDVkDCHMlIbdMjGMHOtHb",
+        is_local: false,
+        name: "Can I Believe You - Solstice Version",
+        popularity: 36,
+        preview_url:
+          "https://p.scdn.co/mp3-preview/2663877c6d8a00ff852192713c268993353d63f8?cid=817f89d13589462593898db523dc4092",
+        track_number: 13,
+        type: "track",
+        uri: "spotify:track:6BDVkDCHMlIbdMjGMHOtHb",
+      },
+      currently_playing_type: "track",
+      actions: { disallows: { resuming: true, skipping_prev: true } },
+      is_playing: true,
+    };
+    document.getElementById("spotify-widget").innerHTML = song.item.name;
+
+    console.log(song);
+    return true;
+  }
+  get_song();
+</script> -->

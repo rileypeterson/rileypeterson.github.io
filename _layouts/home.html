@@ -7,6 +7,8 @@ layout: default
     <h1 class="page-title">{{ page.title }}</h1>
   {%- endif -%}
 
+  {%- include spotify-widget.html -%}
+
   {{ content }}
 
   {%- include project-list.html -%}
