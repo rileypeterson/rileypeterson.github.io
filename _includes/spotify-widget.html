@@ -62,7 +62,17 @@
   var m_secs = 0;
   var interval = 20 * 1000;
   async function getSong() {
-    var res = await fetch("http://localhost:8000/spotify/");
+    try {
+      var res = await fetch("http://localhost:8000/spotify/");
+    } catch (err) {
+      console.log("No connection to API... giving up on spotify widget")
+      clearInterval(timeUpdateInterval);
+      clearInterval(getSongInterval);
+      document.getElementById("spotify-player-widget").style.display = "none";
+      document.getElementById("spotify-playing-now-id").style.display = "none";
+      return true;
+    }
+    // var res = await fetch("http://localhost:8000/spotify/");
     new_song_json = await res.json();
     if (new_song_json.is_playing == false) {
       document.getElementById("spotify-playing-now-text").innerText = "Last Played";
@@ -168,6 +178,6 @@
   }
   getSong();
   timeUpdate();
-  setInterval(timeUpdate, 1000);
-  setInterval(getSong, interval);
+  const timeUpdateInterval = setInterval(timeUpdate, 1000);
+  const getSongInterval = setInterval(getSong, interval);
 </script>
