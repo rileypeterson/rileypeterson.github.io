@@ -28,11 +28,11 @@
 
   function timeUpdate() {
     var progress_ms = 0;
-    var c_time = (progress_ms + m_secs);
+    var c_time = Math.min(duration_ms, (progress_ms + m_secs));
     var playPercent = timelineWidth * (c_time / duration_ms);
     playhead.style.width = playPercent + "px";
 
-    var secondsIn = Math.floor((Math.min(c_time, duration_ms)) / 1000);
+    var secondsIn = Math.floor(c_time / 1000);
     var actual_seconds_in = secondsIn % 60;
     var actual_minutes_in = Math.floor(secondsIn / 60);
     var actual_hours_in = Math.floor(secondsIn / 3600);
