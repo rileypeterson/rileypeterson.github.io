@@ -13,13 +13,9 @@
       <h2>{{ page_title | capitalize }}</h2>
     </a>
     {% endfor %}
-
-    <!-- <div id="home">
-      <a href="#"><h2>Home</h2></a>
-    </div>
-    <a href="{{ site.baseurl }}/about"><h2>About</h2></a>
-    <a href="#"><h2>Projects</h2></a> -->
   </div>
   <hr class="sidebar-hr" />
-  {%- include spotify-widget.html -%}
+  {% if page.url == "/" or page.url == "/home/" %}
+    {%- include spotify-widget.html -%}
+  {% endif %}
 </div>
