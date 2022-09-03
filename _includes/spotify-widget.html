@@ -1,0 +1,195 @@
+<!-- https://codepen.io/ozzie/pen/YPOBEJ -->
+<!-- Playing Now / Last Played Button -->
+<div id="spotify-playing-now-id" class="spotify-playing-now">
+    <p id="spotify-playing-now-text" style="display: inline">Playing Now</p>
+    <img
+        width="25px"
+        height="25px"
+        src='{{ "assets/images/spotify/spotify.png" | relative_url }}'
+    />&nbsp;:
+</div>
+<!-- Actual Spotify Widget -->
+<a id="spotify-song-link" href="" target="_blank">
+    <div class="spotify-player" id="spotify-player-widget">
+        <ul>
+            <li class="spotify-cover">
+                <img id="spotify-album-cover" src="" />
+            </li>
+            <li class="spotify-info">
+                <h2 id="song-title"></h2>
+                <h4 id="song-artist"></h4>
+                <div class="spotify-button-items">
+                    <div id="spotify-slider">
+                        <div id="spotify-elapsed"></div>
+                    </div>
+                    <div id="spotify-timer"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</a>
+
+<script>
+    // Globals
+    var is_wrapped = false;
+    var playhead = document.getElementById("spotify-elapsed");
+    var timeline = document.getElementById("spotify-slider");
+    var timer = document.getElementById("spotify-timer");
+    var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
+
+    var song_json;
+    var new_song_json;
+    var duration_ms = 30 * 1000;
+    var progress_ms;
+    var m_secs = 0;
+    var interval = 20 * 1000; // How often to check API for new song or cache
+
+    function isEmpty(obj) {
+        return Object.keys(obj).length === 0;
+    }
+
+    function isElementOverflowing(elm) {
+        var overflowX = elm.offsetWidth < elm.scrollWidth;
+        return overflowX;
+    }
+    function wrapContentsInMarquee(elm) {
+        var marquee = document.createElement("marquee"),
+            contents = elm.innerText;
+        marquee.innerText = contents;
+        elm.innerHTML = "";
+        elm.appendChild(marquee);
+    }
+
+    function marqueeWrap(elmName) {
+        var elm = document.getElementById(elmName);
+        if (isElementOverflowing(elm)) {
+            wrapContentsInMarquee(elm);
+        }
+    }
+
+    function doMarqueeWrap(is_wrapped, song_json, new_song_json) {
+        if (
+            is_wrapped == false ||
+            song_json.item.external_urls.spotify !=
+                new_song_json.item.external_urls.spotify
+        ) {
+            // Attempt a marqueeWrap because this is either a new song or it hasn't wrapped already
+            marqueeWrap("song-artist");
+            marqueeWrap("song-title");
+            is_wrapped = true;
+        }
+    }
+
+    function sameSong() {
+        duration_ms = new_song_json.item.duration_ms;
+        if (new_song_json.progress_ms != progress_ms) {
+            m_secs = 0;
+        }
+        progress_ms = new_song_json.progress_ms;
+        if (
+            song_json != null &&
+            song_json.item.name == new_song_json.item.name
+        ) {
+            // Do nothing because the song is the exact same as before
+            return true;
+        }
+        return false;
+    }
+
+    function updateSongAttrs() {
+        var album_cover = document.getElementById("spotify-album-cover");
+        album_cover.src = new_song_json.item.album.images[0].url;
+        var song_title = document.getElementById("song-title");
+        song_title.innerText = new_song_json.item.name;
+        var artist_name = document.getElementById("song-artist");
+        artist_name.innerText = new_song_json.item.artists[0].name;
+        var song_link = document.getElementById("spotify-song-link");
+        song_link.href = new_song_json.item.external_urls.spotify;
+    }
+
+    function updateSong() {
+        if (sameSong()) return;
+        updateSongAttrs();
+        doMarqueeWrap(is_wrapped, song_json, new_song_json);
+    }
+
+    function hideWidget() {
+        document.getElementById("spotify-player-widget").style.display = "none";
+        document.getElementById("spotify-playing-now-id").style.display =
+            "none";
+    }
+
+    function removeWidget() {
+        clearInterval(timeUpdateInterval);
+        clearInterval(getSongInterval);
+        hideWidget();
+        return false;
+    }
+
+    async function getSong() {
+        try {
+            if (window.location.href == 'http://localhost:4000/') {
+                var res = await fetch("http://localhost:8000/spotify/?q=my10");
+            } else {
+                var res = await fetch("https://pihub394.tplinkdns.com/spotify/?q=my10");
+            }
+        } catch (err) {
+            console.log("No connection to API... giving up on spotify widget");
+            return removeWidget();
+        }
+        if (res.status != 200) {
+            console.log("API did not get a successful response");
+            return removeWidget();
+        }
+        // var res = await fetch("http://localhost:8000/spotify/");
+        new_song_json = await res.json();
+        if (new_song_json.is_playing == false) {
+            document.getElementById("spotify-playing-now-text").innerText =
+                "Last Played";
+            updateSong();
+        } else {
+            // There is a new song playing
+            document.getElementById("spotify-playing-now-text").innerText =
+                "Playing Now";
+            updateSong();
+        }
+        song_json = new_song_json;
+        return true;
+    }
+
+    function timeUpdate() {
+        if (progress_ms + m_secs >= duration_ms - 1000) {
+            getSong();
+        }
+        var c_time = Math.min(duration_ms, progress_ms + m_secs);
+        var playPercent = timelineWidth * (c_time / duration_ms);
+        playhead.style.width = playPercent + "px";
+
+        var secondsIn = Math.floor(c_time / 1000);
+        var actual_seconds_in = secondsIn % 60;
+        var actual_minutes_in = Math.floor(secondsIn / 60);
+        var actual_hours_in = Math.floor(secondsIn / 3600);
+        var t = "";
+        if (actual_hours_in > 0) {
+            t += String(actual_hours_in).padStart(2, "0");
+            t += ":";
+        }
+        t += String(actual_minutes_in).padStart(2, "0");
+        t += ":";
+        t += String(actual_seconds_in).padStart(2, "0");
+        if (t == "NaN:NaN") {
+            timer.innerHTML = "";
+        } else {
+            timer.innerHTML = t;
+        }
+        if (new_song_json && new_song_json.is_playing == false) {
+            m_secs += 0;
+        } else {
+            m_secs += 1000;
+        }
+    }
+    getSong();
+    timeUpdate();
+    const timeUpdateInterval = setInterval(timeUpdate, 1000);
+    const getSongInterval = setInterval(getSong, interval);
+</script>

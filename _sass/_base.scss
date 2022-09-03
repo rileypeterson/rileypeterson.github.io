@@ -132,8 +132,8 @@ main {
 }
 
 .sidebarMenu > a > h2 {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   margin-top: 1px;
   margin-bottom: 1px;
   width: 70%;
@@ -148,8 +148,8 @@ main {
 }
 
 .sidebarMenu {
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .sidebar {
@@ -179,15 +179,15 @@ img.rounded-img {
 }
 
 ul.social-media-row {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin: 0px;
   padding-left: 0px;
 }
 
 ul.social-media-row > li {
   display: inline;
-  padding-right: 10px;
+  padding-right: 5px;
 }
 
 ul.social-media-row > li:last-child {
@@ -205,13 +205,15 @@ ul.social-media-row > li:last-child {
 
 }
 
-.contact-info .svg-icon{
+.contact-info .svg-icon {
   width: $defaultSidebarWidth/5;
   height: $defaultSidebarWidth/5;
   fill: $defaultFontColor;
   max-width: 40px;
   max-height: 40px;
-  vertical-align: middle;
+  border: 1.5px solid #ffffff;
+  border-radius: 10px;
+  // vertical-align: middle;
 }
 
 .contact-info span {
@@ -240,6 +242,14 @@ ul.social-media-row > li:last-child {
   border: $defaultHoverColor solid 1.5px;
 }
 
+.contact-info .svg-icon:hover {
+  border: 1.5px solid $defaultHoverColor;
+}
+
+.contact-info svg:hover > rect:nth-child(2) {
+  fill: $defaultHoverColor;
+}
+
 .tooltip {
   position: relative;
   display: inline-block;
@@ -255,7 +265,7 @@ ul.social-media-row > li:last-child {
   padding: 5px;
   position: absolute;
   z-index: 1;
-  bottom: 20%;
+  bottom: 50%;
   left: 135%;
   // margin-left: -75px;
   opacity: 0;
@@ -518,6 +528,12 @@ h2.notes-subtitle {
   margin-left: 75px;
 }
 
+.rasp-image-medium {
+  width: 40%;
+  align-items: left;
+  margin-left: 10px;
+}
+
 .rasp-image-big {
   width: 80%;
   align-items: left;
@@ -528,3 +544,4 @@ h2.notes-subtitle {
 
 @import "table";
 @import "monokai";
+@import "spotify";

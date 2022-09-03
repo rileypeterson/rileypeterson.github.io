@@ -1,6 +1,90 @@
 <ul class="social-media-row">
-  {%- if site.github_username -%}<li><a href="https://github.com/{{ site.github_username| cgi_escape | escape }}" target="_blank"><svg class="svg-icon" viewBox="0 0 16 16";><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if site.instagram_username -%}<li><a href="https://instagram.com/{{ site.instagram_username| cgi_escape | escape }}" target="_blank"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="{{ '/assets/minima-social-icons.svg#instagram' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if site.linkedin_username -%}<li><a href="https://www.linkedin.com/in/{{ site.linkedin_username| cgi_escape | escape }}" target="_blank"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg></a></li>{%- endif -%}
-  {%- if site.twitter_username -%}<li><a href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}" target="_blank"><svg class="svg-icon" viewBox="0 0 16 16"><use xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"></use></svg></a></li>{%- endif -%}
+  {%- if site.github_username -%}
+  <li>
+    <a
+      href="https://github.com/{{ site.github_username| cgi_escape | escape }}"
+      target="_blank"
+      ><svg class="svg-icon" viewBox="0 0 16 16" ;>
+        <use
+          xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"
+        ></use></svg
+    ></a>
+  </li>
+  {%- endif -%} {%- if site.instagram_username -%}
+  <li>
+    <a
+      href="https://instagram.com/{{ site.instagram_username| cgi_escape | escape }}"
+      target="_blank"
+      ><svg class="svg-icon" viewBox="0 0 16 16">
+        <use
+          xlink:href="{{ '/assets/minima-social-icons.svg#instagram' | relative_url }}"
+        ></use></svg
+    ></a>
+  </li>
+  {%- endif -%} {%- if site.linkedin_username -%}
+  <li>
+    <a
+      href="https://www.linkedin.com/in/{{ site.linkedin_username| cgi_escape | escape }}"
+      target="_blank"
+      ><svg class="svg-icon" viewBox="0 0 16 16">
+        <use
+          xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"
+        ></use></svg
+    ></a>
+  </li>
+  {%- endif -%} {%- if site.twitter_username -%}
+  <li>
+    <a
+      href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}"
+      target="_blank"
+      ><svg class="svg-icon" viewBox="0 0 16 16">
+        <use
+          xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"
+        ></use></svg
+    ></a>
+  </li>
+  {%- endif -%}
+  <script>
+    function myFunction() {
+      /* Copy the text inside the text field */
+      var my_email = "rileypeterson21@gmail.com";
+      navigator.clipboard.writeText(my_email);
+      var tooltip = document.getElementById("myTooltip");
+      tooltip.innerHTML = "Copied Email";
+    }
+    function outFunc() {
+      var tooltip = document.getElementById("myTooltip");
+      tooltip.innerHTML = "Copy Email";
+    }
+  </script>
+
+  <li
+    class="contact-info tooltip"
+    onmouseleave="outFunc()"
+    onclick="myFunction()"
+  >
+    {%- if site.email -%}
+    <!-- <a href="mailto:{{ site.email }}" target="_blank"> -->
+    <a href="#">
+      <span class="tooltiptext" id="myTooltip">Copy Email</span>
+
+      <svg
+        class="svg-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-label="Email"
+        role="img"
+        viewBox="0 0 512 512"
+      >
+        <rect width="512" height="512" rx="15%" fill="#012338" />
+        <rect width="356" height="256" x="78" y="128" fill="#fff" rx="8%" />
+        <path
+          fill="none"
+          stroke="#012338"
+          stroke-width="20"
+          d="M434 128L269 292c-7 8-19 8-26 0L78 128m0 256l129-128m227 128L305 256"
+        />
+      </svg>
+    </a>
+    {%- endif -%}
+  </li>
 </ul>
