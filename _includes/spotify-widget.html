@@ -113,6 +113,20 @@
         doMarqueeWrap(is_wrapped, song_json, new_song_json);
     }
 
+    function showWidget() {
+        if (
+            document.getElementById("spotify-player-widget").style.display ==
+                "none" ||
+            document.getElementById("spotify-player-widget").style.display == ""
+        ) {
+            document.getElementById("spotify-player-widget").style.display =
+                "block";
+            document.getElementById("spotify-playing-now-id").style.display =
+                "block";
+            timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
+        }
+    }
+
     function hideWidget() {
         document.getElementById("spotify-player-widget").style.display = "none";
         document.getElementById("spotify-playing-now-id").style.display =
@@ -128,10 +142,12 @@
 
     async function getSong() {
         try {
-            if (window.location.href == 'http://localhost:4000/') {
+            if (window.location.href == "http://localhost:4000/") {
                 var res = await fetch("http://localhost:8000/spotify/?q=my10");
             } else {
-                var res = await fetch("https://pihub394.tplinkdns.com/spotify/?q=my10");
+                var res = await fetch(
+                    "https://pihub394.tplinkdns.com/spotify/?q=my10"
+                );
             }
         } catch (err) {
             console.log("No connection to API... giving up on spotify widget");
@@ -141,6 +157,7 @@
             console.log("API did not get a successful response");
             return removeWidget();
         }
+        showWidget();
         // var res = await fetch("http://localhost:8000/spotify/");
         new_song_json = await res.json();
         if (new_song_json.is_playing == false) {
@@ -158,9 +175,6 @@
     }
 
     function timeUpdate() {
-        if (progress_ms + m_secs >= duration_ms - 1000) {
-            getSong();
-        }
         var c_time = Math.min(duration_ms, progress_ms + m_secs);
         var playPercent = timelineWidth * (c_time / duration_ms);
         playhead.style.width = playPercent + "px";
