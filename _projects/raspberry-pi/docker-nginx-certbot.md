@@ -29,14 +29,15 @@ Fortunately I was able to set all this up using my mesh Wifi service (Deco by TP
 
 Here's the screenshots for how to set up each:
 
-* ![RPI-TP-Link](/assets/images/raspberry-pi/RPI-TP-Link.PNG){:class="rasp-image-small"}
-* ![RPI-DDNS](/assets/images/raspberry-pi/RPI-DDNS.PNG){:class="rasp-image-small"}
-* ![RPI-Port-Forwarding](/assets/images/raspberry-pi/RPI-Port-Forwarding.PNG){:class="rasp-image-small"}
-* ![RPI-Port-Forwarding-Page](/assets/images/raspberry-pi/RPI-Port-Forwarding-Page.PNG){:class="rasp-image-small"}
+* ![RPI-TP-Link](/assets/images/raspberry-pi/RPI-TP-Link.PNG){:class="rasp-image-medium"}
+* ![RPI-DDNS](/assets/images/raspberry-pi/RPI-DDNS.PNG){:class="rasp-image-medium"}
+* ![RPI-Port-Forwarding](/assets/images/raspberry-pi/RPI-Port-Forwarding.PNG){:class="rasp-image-medium"}
+* ![RPI-Port-Forwarding-Page](/assets/images/raspberry-pi/RPI-Port-Forwarding-Page.PNG){:class="rasp-image-medium"}
 
 ## How does this work? ... Continued
-Beyond the networking configuration, of course we need to configure the software on the Raspberry Pi to process requests. I decided to use [Docker](https://www.docker.com/) / Docker Compose for this. Docker containers enable you to create applications that are independent of each other in terms of development and deployment, but can be integrated together via network interfaces. Basically, they're microservices. The nice thing is that specific software will have their own docker images with that software pre installed. For my stack, here is the list of the services:
+Beyond the networking configuration, of course we need to configure the software on the Raspberry Pi to process requests. I decided to use [Docker](https://www.docker.com/) / [Docker Compose](https://docs.docker.com/compose/) for this. Docker containers enable you to create applications that are independent of each other in terms of development and deployment, but can be integrated together via network interfaces. Basically, they're microservices. The nice thing is that specific software will have their own docker images with that software pre installed. For my stack, here is the list of the services:
 
 
 ![Pihub-Docker](/assets/images/raspberry-pi/pihub-docker.png){:class="rasp-image-big"}
 
+We will dive into each of these... To be continued
