@@ -30,13 +30,13 @@ I have a Mac so these are the instructions for that. These instructions enable y
     ![image](https://user-images.githubusercontent.com/29719483/168674508-137f7513-416f-47d3-8688-cfe30b197e27.png)
   * Require `sudo` to require password (on Pi):
     ![image](https://user-images.githubusercontent.com/29719483/168674295-937d0b71-03b2-44c8-bd55-99d3eb9a1835.png)
-* [Prevent `Wi-Fi is currently blocked by rfkill.` message](https://raspberrypi.stackexchange.com/a/123724)
-* Set other locale and configuration options
+* [Prevent `Wi-Fi is currently blocked by rfkill.` message](https://raspberrypi.stackexchange.com/a/123724) (You can do this via the UI)
+* Set other locale and configuration options (from Desktop on Pi, Preferences > Raspberry Pi Configuration)
 * [iterm2](https://iterm2.com/) Quick SSH Profile
   ![image](/assets/images/raspberry-pi/iterm.png)
 * Lastly I enabled auto-login under the Raspberry Pi preferences so that if it ever rebooted it wouldn't hang at the login
 * Also, get [Xquartz](https://www.xquartz.org/) and make sure the GUI forwarding works (e.g. `geany &` (on Pi via SSH))
-* Turn off display using `vcgencmd display_power 0`, on is `vcgencmd display_power 1` or after reboot it turns back on
+* Turn off display using `vcgencmd display_power 0`, on is `vcgencmd display_power 1` or after reboot it turns back on. [This no longer works.](https://github.com/raspberrypi/firmware/issues/1740)
 * One thing I notice is that if the ethernet cable is unplugged from my raspberry pi, but it's still connected over the wireless the private IP address changes. I can still login via ssh (using new IP address): 
   
   `ssh -A -Y yourusername@192.xxx.xxx.yyy`
@@ -46,7 +46,7 @@ I have a Mac so these are the instructions for that. These instructions enable y
 * Set-up Permanent IP Address
   * I'm following the instructions [here](https://raspberrypi-guide.github.io/networking/set-up-static-ip-address)
   * First run `netstat -nr`
-  * `sudo nano /etc/dhcpcd.conf` add the following:
+  * `sudo nano /etc/dhcpcd.conf` add the following (where `xx.z` is under Gateway of netstat):
     ```
     # Raspberry Pi Setup
     interface eth0
@@ -55,11 +55,13 @@ I have a Mac so these are the instructions for that. These instructions enable y
     static routers=192.168.xx.z
     static domain_name_servers=192.168.xx.z
 
+    # Prioritize Ethernet Connection Over Wifi
     interface wlan0
     metric 200
     ```
+* `sudo reboot`
 * Easy ssh (`ssh pi`)
-  * `nano ~/.ssh/config` add the following:
+  * `nano ~/.ssh/config` add the following (on host Mac):
     ```
     Host pi
       Hostname 192.168.xx.yyy
