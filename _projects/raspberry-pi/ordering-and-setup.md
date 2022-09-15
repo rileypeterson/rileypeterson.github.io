@@ -63,7 +63,7 @@ You are probably looking at between \\$75-\$100 depending on what you already ha
 
 ## Writing OS to Micro SD
 If you bought a [NOOBS Micro SD card](https://www.raspberrypi.com/news/introducing-noobs/), you don't need to do this step. Otherwise,
-the raspberry pi needs an operating system to work. Following [these steps](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2), write the raspberry pi OS to the micro SD card. I used the adapter that came with the San Disk Micro SD and inserted that into the Mac dongle slot for the SD Card. I just did the recommended OS.
+the raspberry pi needs an operating system to work. Following [these steps](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2), write the raspberry pi OS to the micro SD card. [Edit: 4 months later and I'm needing the 64 bit OS to run a docker image so I'm going to re-image everything. So install 64-bit, especially if you want to use Docker]. I used the adapter that came with the San Disk Micro SD and inserted that into the Mac dongle slot for the SD Card. I just did the recommended OS.
 
 ## Connecting and Booting Up
 Basically following [these steps](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3):
