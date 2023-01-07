@@ -51,3 +51,8 @@ I made notes and did the exercises so that I can reference things for future pro
 * Chapter 8 : Dimensionality Reduction
   * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter8/notes.md %})
   * [Exercises]({{ site.baseurl }}{% link _projects/ml-book/chapter8/exercises.md %})
+
+## Part 2: Neural Networks and Deep Learning
+
+
+* Coming soon...
