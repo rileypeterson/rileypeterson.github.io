@@ -17,7 +17,15 @@ I made notes and did the exercises so that I can reference things for future pro
 {% include proj-image-description.html image_url="https://github.com/ageron/handson-ml" %}
 
 <br>
-## [My Github Repository](https://github.com/rileypeterson/ml)
+## [![gh] &nbsp;  My Github Repository](https://github.com/rileypeterson/ml){: target="_blank"}
+
+[gh]: https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg
+{: height="40px" width="40px" align="left" vertical-align="baseline"}
+
+<br>
+
+## Part 1: Fundamentals of Machine Learning
+
 
 * Chapter 1 : The Machine Learning Landscape
   * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter1/notes.md %})
@@ -40,3 +48,6 @@ I made notes and did the exercises so that I can reference things for future pro
 * Chapter 7 : Ensemble Learning and Random Forests
   * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter7/notes.md %})
   * [Exercises]({{ site.baseurl }}{% link _projects/ml-book/chapter7/exercises.md %})
+* Chapter 8 : Dimensionality Reduction
+  * [Notes]({{ site.baseurl }}{% link _projects/ml-book/chapter8/notes.md %})
+  * [Exercises]({{ site.baseurl }}{% link _projects/ml-book/chapter8/exercises.md %})
