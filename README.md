@@ -1,6 +1,9 @@
 ## Useful commands
 `bundle exec jekyll serve --livereload`
 
+## Install
+* https://jekyllrb.com/docs/installation/macos/
+
 ## Notes
 * One thing I really want for my site is a sidebar. Everyone online is really quickly to make some fancy plugin. Guess I'll be going the long way to figure this one out. 
 * I like the default minima theme but I wanted to make a few changes to it and just see what it actually looks like so I just copied that into my root folder: 
