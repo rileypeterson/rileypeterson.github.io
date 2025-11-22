@@ -117,3 +117,11 @@ sudo reboot
 And that's it! We've upgraded from Debian bullseye to trixie.
 
 [Side note: The syntax highlighting is a little wonky here because I've customized it for Python which is most of the code on this site.]
+
+I tried last but [it doesn't work anymore](https://www.debian.org/releases///trixie/release-notes/issues.en.html#the-last-lastb-and-lastlog-commands-have-been-replaced). I used this to get it working:
+```bash
+sudo apt install wtmpdb libpam-wtmpdb
+echo "alias last='wtmpdb last'" >> ~/.bashrc
+# SSH out and back in (or run .bashrc)
+last # Works now
+```
