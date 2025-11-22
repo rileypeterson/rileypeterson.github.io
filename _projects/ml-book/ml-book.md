@@ -3,7 +3,7 @@ layout: project
 title: "ML Book"
 date: 2020-11-26
 cur_date: 2022-07-05
-end_date: Present
+end_date: 2023-01-07
 categories: machine learning data science education
 preview-image: preview.jpg
 permalink: /projects/ml-book/

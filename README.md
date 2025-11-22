@@ -1,5 +1,5 @@
-## Useful commands
-`bundle exec jekyll serve --livereload`
+## Running with Docker
+TODO explain this...
 
 ## Install
 * https://jekyllrb.com/docs/installation/macos/
