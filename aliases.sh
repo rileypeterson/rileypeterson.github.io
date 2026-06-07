@@ -1,2 +1,3 @@
 alias start="docker compose up"
-alias update-gems="bundle update"
+alias stop="docker compose down"
+alias update="docker compose run --rm jekyll bundle update github-pages"
