@@ -1,2 +1,2 @@
-alias start="bundle exec jekyll serve --livereload & open http://localhost:4000/"
+alias start="docker compose up"
 alias update-gems="bundle update"
